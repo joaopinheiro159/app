@@ -77,7 +77,9 @@ class RegisterView extends GetView<RegisterController> {
                 height: 60,
                 labelColor: MainTheme.backgroundColor,
                 buttonColor: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Get.offNamed(Routes.REGISTER_SUCCESS);
+                },
               ),
             ),
             SizedBox(

@@ -9,6 +9,7 @@ import 'package:klinimed_app/app/modules/login/views/login_view.dart';
 import 'package:klinimed_app/app/modules/menu/bindings/menu_binding.dart';
 import 'package:klinimed_app/app/modules/menu/views/menu_view.dart';
 import 'package:klinimed_app/app/modules/register/bindings/register_binding.dart';
+import 'package:klinimed_app/app/modules/register/views/register_success_view.dart';
 import 'package:klinimed_app/app/modules/register/views/register_view.dart';
 import 'package:klinimed_app/app/modules/splash/bindings/splash_binding.dart';
 import 'package:klinimed_app/app/modules/splash/views/splash_view.dart';
@@ -37,6 +38,11 @@ class AppPages {
     GetPage(
       name: _Paths.REGISTER,
       page: () => RegisterView(),
+      binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER_SUCCESS,
+      page: () => RegisterSuccessView(),
       binding: RegisterBinding(),
     ),
     GetPage(
