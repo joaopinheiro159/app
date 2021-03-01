@@ -84,7 +84,9 @@ class LoginView extends GetView<LoginController> {
                 buttonColor: Color(0XFFF27E77),
                 height: 60,
                 labelColor: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.FORGOT_PASSWORD);
+                },
               ),
             ),
             SizedBox(
