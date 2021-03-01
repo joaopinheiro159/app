@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_header.dart';
@@ -68,7 +69,9 @@ class LoginView extends GetView<LoginController> {
                 buttonColor: Color(0XFF7B9EB1),
                 height: 60,
                 labelColor: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.REGISTER);
+                },
               ),
             ),
             SizedBox(
