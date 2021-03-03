@@ -56,7 +56,9 @@ class LoginView extends GetView<LoginController> {
                 label: 'ENTRAR',
                 height: 60,
                 labelColor: MainTheme.backgroundColor,
-                onPressed: () {},
+                onPressed: () {
+                  Get.offNamed(Routes.PLAN_SELECTION);
+                },
               ),
             ),
             SizedBox(
