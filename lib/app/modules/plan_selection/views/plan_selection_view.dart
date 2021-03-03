@@ -73,7 +73,9 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
               child: FlatButton(
                 color: Colors.white,
                 height: 50,
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.MENU);
+                },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
