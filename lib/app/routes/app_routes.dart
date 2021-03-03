@@ -8,6 +8,7 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const REGISTER_SUCCESS = _Paths.REGISTER_SUCCESS;
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
+  static const FORGOT_PASSWORD_RESULT = _Paths.FORGOT_PASSWORD_RESULT;
   static const MENU = _Paths.MENU;
 }
 
@@ -18,5 +19,6 @@ abstract class _Paths {
   static const REGISTER = '/register';
   static const REGISTER_SUCCESS = '/register-success';
   static const FORGOT_PASSWORD = '/forgot-password';
+  static const FORGOT_PASSWORD_RESULT = '/forgot-password-result';
   static const MENU = '/menu';
 }

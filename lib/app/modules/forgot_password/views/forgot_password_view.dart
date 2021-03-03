@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:klinimed_app/app/modules/register/controllers/register_controller.dart';
+import 'package:klinimed_app/app/modules/forgot_password/controllers/forgot_password_controller.dart';
 import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_header.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_text_field.dart';
 
-class ForgotPasswordView extends GetView<RegisterController> {
+class ForgotPasswordView extends GetView<ForgotPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +52,7 @@ class ForgotPasswordView extends GetView<RegisterController> {
                 labelColor: MainTheme.backgroundColor,
                 buttonColor: Colors.white,
                 onPressed: () {
-                  Get.offNamed(Routes.REGISTER_SUCCESS);
+                  Get.offNamed(Routes.FORGOT_PASSWORD_RESULT);
                 },
               ),
             ),

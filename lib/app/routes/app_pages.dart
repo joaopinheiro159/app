@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import 'package:klinimed_app/app/modules/forgot_password/bindings/forgot_password_binding.dart';
+import 'package:klinimed_app/app/modules/forgot_password/views/forgot_password_result_view.dart';
 import 'package:klinimed_app/app/modules/forgot_password/views/forgot_password_view.dart';
 import 'package:klinimed_app/app/modules/home/bindings/home_binding.dart';
 import 'package:klinimed_app/app/modules/home/views/home_view.dart';
@@ -48,6 +49,11 @@ class AppPages {
     GetPage(
       name: _Paths.FORGOT_PASSWORD,
       page: () => ForgotPasswordView(),
+      binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.FORGOT_PASSWORD_RESULT,
+      page: () => ForgotPasswordResultView(),
       binding: ForgotPasswordBinding(),
     ),
     GetPage(
