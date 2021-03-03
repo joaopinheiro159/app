@@ -29,22 +29,25 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
             Expanded(
               child: Container(),
             ),
-            Image.asset(
-              'assets/klini_area_cliente.png',
-              height: 40,
+            Container(
+              child: Image.asset(
+                'assets/klini_area_cliente.png',
+                height: 90,
+              ),
             ),
             SizedBox(
               height: 20,
             ),
             Container(
-              width: 100.0,
-              height: 100.0,
+              height: 100,
+              width: 100,
               decoration: new BoxDecoration(
                 shape: BoxShape.circle,
                 image: new DecorationImage(
                   fit: BoxFit.fill,
                   image: new NetworkImage(
-                      "https://reqres.in/img/faces/9-image.jpg"),
+                    "https://reqres.in/img/faces/9-image.jpg",
+                  ),
                 ),
               ),
             ),
