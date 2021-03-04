@@ -34,7 +34,7 @@ class MenuView extends GetView<MenuController> {
                       ),
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.only(top: 35),
+                          padding: EdgeInsets.only(top: 40),
                           child: Image.asset(
                             'assets/klini_area_cliente.png',
                             height: 40,
