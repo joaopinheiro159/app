@@ -11,7 +11,6 @@ class KliniHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      overflow: Overflow.visible,
       children: [
         ClipPath(
           clipBehavior: Clip.antiAlias,

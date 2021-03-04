@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:get/get.dart';
 import 'package:klinimed_app/app/modules/menu/controllers/menu_controller.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/custom_appbar.dart';
-import 'package:klinimed_app/app/shared/widgets/custom_shape.dart';
 
 class MenuView extends GetView<MenuController> {
   @override

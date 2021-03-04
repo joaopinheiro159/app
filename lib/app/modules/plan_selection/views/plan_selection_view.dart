@@ -72,16 +72,18 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
               height: 20,
             ),
             Container(
-              width: Get.width * 0.75,
-              child: FlatButton(
-                color: Colors.white,
-                height: 50,
+              width: Get.width * 0.80,
+              height: 50,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  backgroundColor: Colors.white,
+                ),
                 onPressed: () {
                   Get.toNamed(Routes.MENU);
                 },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,9 +95,9 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
                     Text(
                       'KLINI FÁCIL - 999999999',
                       style: TextStyle(
-                        color: MainTheme.backgroundColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                          color: MainTheme.backgroundColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13),
                     ),
                     Icon(
                       Icons.check_circle_rounded,
@@ -109,15 +111,17 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
               height: 20,
             ),
             Container(
-              width: Get.width * 0.75,
+              width: Get.width * 0.80,
               height: 50,
-              child: FlatButton(
-                color: MainTheme.backgroundColor,
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: Colors.white),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: MainTheme.backgroundColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    side: BorderSide(color: Colors.white),
+                  ),
                 ),
+                onPressed: () {},
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -129,9 +133,9 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
                     Text(
                       'KLINI DENTAL FÁCIL - 888888888',
                       style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13),
                     ),
                     Icon(
                       Icons.check_circle_rounded,
@@ -145,7 +149,7 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
               height: 50,
             ),
             Container(
-              width: Get.width * 0.75,
+              width: Get.width * 0.80,
               child: KliniButton(
                 buttonColor: Colors.white,
                 labelColor: MainTheme.backgroundColor,

@@ -27,13 +27,15 @@ class KliniButton extends StatelessWidget {
     return SizedBox(
       width: width,
       height: height,
-      child: RaisedButton(
-        elevation: 0,
-        color: buttonColor,
-        onPressed: onPressed,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          primary: buttonColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
         ),
+        onPressed: onPressed,
         child: Text(
           label,
           style: textStyle ??
