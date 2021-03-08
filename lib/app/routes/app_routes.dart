@@ -13,6 +13,7 @@ abstract class Routes {
   static const PLAN_SELECTION = _Paths.PLAN_SELECTION;
   static const WALLET = _Paths.WALLET;
   static const REFERENCED_SEARCH = _Paths.REFERENCED_SEARCH;
+  static const REFERENCED_SEARCH_RESULT = _Paths.REFERENCED_SEARCH_RESULT;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const PLAN_SELECTION = '/plan-selection';
   static const WALLET = '/wallet';
   static const REFERENCED_SEARCH = '/referenced-search';
+  static const REFERENCED_SEARCH_RESULT = '/referenced-search-result';
 }

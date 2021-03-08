@@ -13,6 +13,8 @@ import 'package:klinimed_app/app/modules/plan_selection/bindings/plan_selection_
 import 'package:klinimed_app/app/modules/plan_selection/views/plan_selection_view.dart';
 import 'package:klinimed_app/app/modules/referenced_search/bindings/referenced_search_binding.dart';
 import 'package:klinimed_app/app/modules/referenced_search/views/referenced_search_view.dart';
+import 'package:klinimed_app/app/modules/referenced_search_result/bindings/referenced_search_result_binding.dart';
+import 'package:klinimed_app/app/modules/referenced_search_result/views/referenced_search_result_view.dart';
 import 'package:klinimed_app/app/modules/register/bindings/register_binding.dart';
 import 'package:klinimed_app/app/modules/register/views/register_success_view.dart';
 import 'package:klinimed_app/app/modules/register/views/register_view.dart';
@@ -81,6 +83,11 @@ class AppPages {
       name: _Paths.REFERENCED_SEARCH,
       page: () => ReferencedSearchView(),
       binding: ReferencedSearchBinding(),
+    ),
+    GetPage(
+      name: _Paths.REFERENCED_SEARCH_RESULT,
+      page: () => ReferencedSearchResultView(),
+      binding: ReferencedSearchResultBinding(),
     ),
   ];
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:klinimed_app/app/modules/referenced_search/controllers/referenced_search_controller.dart';
+import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/custom_appbar.dart';
 import 'package:dropdown_search/dropdown_search.dart';
@@ -244,7 +245,9 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
             buttonColor: MainTheme.backgroundColor,
             labelColor: Colors.white,
             label: 'Pesquisar',
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.REFERENCED_SEARCH_RESULT);
+            },
           ),
           Expanded(
             child: Container(),
