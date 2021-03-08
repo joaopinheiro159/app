@@ -1,8 +1,8 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:klinimed_app/app/modules/menu/controllers/menu_controller.dart';
+import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/custom_appbar.dart';
 import 'package:klinimed_app/app/shared/widgets/horizontal_wallet.dart';
@@ -85,7 +85,12 @@ class MenuView extends GetView<MenuController> {
                     items: [1, 2].map((i) {
                       return Builder(
                         builder: (BuildContext context) {
-                          return HorizontalWallet();
+                          return GestureDetector(
+                            child: HorizontalWallet(),
+                            onTap: () {
+                              Get.toNamed(Routes.WALLET);
+                            },
+                          );
                         },
                       );
                     }).toList(),

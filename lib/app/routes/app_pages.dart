@@ -16,6 +16,8 @@ import 'package:klinimed_app/app/modules/register/views/register_success_view.da
 import 'package:klinimed_app/app/modules/register/views/register_view.dart';
 import 'package:klinimed_app/app/modules/splash/bindings/splash_binding.dart';
 import 'package:klinimed_app/app/modules/splash/views/splash_view.dart';
+import 'package:klinimed_app/app/modules/wallet/bindings/wallet_binding.dart';
+import 'package:klinimed_app/app/modules/wallet/views/wallet_view.dart';
 
 part 'app_routes.dart';
 
@@ -67,6 +69,11 @@ class AppPages {
       name: _Paths.PLAN_SELECTION,
       page: () => PlanSelectionView(),
       binding: PlanSelectionBinding(),
+    ),
+    GetPage(
+      name: _Paths.WALLET,
+      page: () => WalletView(),
+      binding: WalletBinding(),
     ),
   ];
 }
