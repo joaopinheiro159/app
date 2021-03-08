@@ -30,11 +30,16 @@ class MenuView extends GetView<MenuController> {
                 height: 100,
                 child: Row(
                   children: [
-                    Container(
-                      padding: EdgeInsets.only(top: 35, left: 20),
-                      child: Image.asset(
-                        'assets/sorriso.png',
-                        height: 40,
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(top: 35, left: 20),
+                        child: Image.asset(
+                          'assets/sorriso.png',
+                          height: 40,
+                        ),
                       ),
                     ),
                     Expanded(
@@ -140,7 +145,9 @@ class MenuView extends GetView<MenuController> {
                       buttonColor: Color(0XFFF27E77),
                       height: 60,
                       labelColor: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.offNamed(Routes.LOGIN);
+                      },
                     ),
                   ),
                   SizedBox(

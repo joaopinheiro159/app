@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:klinimed_app/app/modules/referenced_search_result/controllers/referenced_search_result_controller.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/custom_appbar.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
 
 class ReferencedSearchResultView
@@ -28,11 +27,16 @@ class ReferencedSearchResultView
                 height: 100,
                 child: Row(
                   children: [
-                    Container(
-                      padding: EdgeInsets.only(top: 35, left: 20),
-                      child: Image.asset(
-                        'assets/sorriso.png',
-                        height: 40,
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(top: 35, left: 20),
+                        child: Image.asset(
+                          'assets/sorriso.png',
+                          height: 40,
+                        ),
                       ),
                     ),
                     Expanded(

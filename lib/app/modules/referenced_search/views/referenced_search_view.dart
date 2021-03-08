@@ -27,11 +27,16 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
                 height: 100,
                 child: Row(
                   children: [
-                    Container(
-                      padding: EdgeInsets.only(top: 35, left: 20),
-                      child: Image.asset(
-                        'assets/sorriso.png',
-                        height: 40,
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(top: 35, left: 20),
+                        child: Image.asset(
+                          'assets/sorriso.png',
+                          height: 40,
+                        ),
                       ),
                     ),
                     Expanded(

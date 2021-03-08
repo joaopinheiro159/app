@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:klinimed_app/app/modules/register/controllers/register_controller.dart';
+import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_header.dart';
@@ -42,7 +43,9 @@ class RegisterSuccessView extends GetView<RegisterController> {
                     labelColor: MainTheme.backgroundColor,
                     width: Get.width * .8,
                     height: 60,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.offNamed(Routes.LOGIN);
+                    },
                   ),
                 ],
               ),
