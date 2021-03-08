@@ -33,7 +33,8 @@ class VerticalWallet extends StatelessWidget {
                     children: [
                       Text(
                         '2020110020',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                            color: Colors.white, fontSize: descriptionSize),
                       ),
                       Text(
                         'Número da Carteirinha',

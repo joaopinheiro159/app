@@ -68,6 +68,16 @@ class WalletView extends GetView<WalletController> {
           SizedBox(
             height: 30,
           ),
+          Text(
+            'Carteirinha Digital',
+            style: TextStyle(
+                color: MainTheme.backgroundColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 20),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Center(child: VerticalWallet()),
           Expanded(
             child: Container(),

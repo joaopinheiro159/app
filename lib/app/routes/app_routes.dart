@@ -12,6 +12,7 @@ abstract class Routes {
   static const MENU = _Paths.MENU;
   static const PLAN_SELECTION = _Paths.PLAN_SELECTION;
   static const WALLET = _Paths.WALLET;
+  static const REFERENCED_SEARCH = _Paths.REFERENCED_SEARCH;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const MENU = '/menu';
   static const PLAN_SELECTION = '/plan-selection';
   static const WALLET = '/wallet';
+  static const REFERENCED_SEARCH = '/referenced-search';
 }

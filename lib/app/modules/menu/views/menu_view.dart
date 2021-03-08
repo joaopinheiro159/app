@@ -98,11 +98,16 @@ class MenuView extends GetView<MenuController> {
                   SizedBox(
                     height: 30,
                   ),
-                  MenuCard(
-                    icon: FontAwesomeIcons.mapMarkerAlt,
-                    title: 'Rede Referenciada',
-                    description:
-                        'Encontre a rede de médicos e hospitais disponíveis para o seu plano.',
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routes.REFERENCED_SEARCH);
+                    },
+                    child: MenuCard(
+                      icon: FontAwesomeIcons.mapMarkerAlt,
+                      title: 'Rede Referenciada',
+                      description:
+                          'Encontre a rede de médicos e hospitais disponíveis para o seu plano.',
+                    ),
                   ),
                   SizedBox(height: 10),
                   MenuCard(

@@ -32,6 +32,7 @@ dependencies:
   responsive_framework: ^0.0.14
   font_awesome_flutter: ^8.11.0
   carousel_slider: ^3.0.0
+  dropdown_search: ^0.4.9
 
 dev_dependencies:
   flutter_test:
