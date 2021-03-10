@@ -16,7 +16,7 @@ class KliniHeader extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           clipper: CustomShape(),
           child: Container(
-            height: 315,
+            height: 305,
             color: Colors.white,
           ),
         ),
