@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
+  final _obscureText = true.obs;
 
-  final count = 0.obs;
+  get obscureText => _obscureText.value;
+
+  void showHidePassword() => _obscureText.toggle();
+
   @override
   void onInit() {
     super.onInit();
@@ -16,5 +19,4 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

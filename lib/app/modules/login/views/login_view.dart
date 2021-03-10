@@ -34,17 +34,29 @@ class LoginView extends GetView<LoginController> {
               width: Get.width * 0.80,
               child: KliniTextField(
                 label: 'CPF',
+                validator: (String value) {
+                  if (value == null || value.isBlank || value.isCpf) {
+                    return 'CPF inválido';
+                  }
+                  return null;
+                },
               ),
             ),
             Container(
               width: Get.width * 0.80,
-              child: KliniTextField(
-                label: 'Senha',
-                obscureText: true,
-                suffixIcon: Icon(Icons.visibility),
-                suffixIconOnPressed: () {
-                  print('toggle');
-                },
+              child: Obx(
+                () => KliniTextField(
+                  label: 'Senha',
+                  obscureText: controller.obscureText,
+                  suffixIcon: Icon(Icons.visibility),
+                  suffixIconOnPressed: controller.showHidePassword,
+                  validator: (String value) {
+                    if (value == null || value.isBlank) {
+                      return 'Senha inválida';
+                    }
+                    return null;
+                  },
+                ),
               ),
             ),
             SizedBox(
