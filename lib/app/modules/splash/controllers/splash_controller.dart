@@ -1,13 +1,20 @@
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/models/user_logged.dart';
 import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashController extends GetxController {
+  final _logged = UserLogged.empty.obs;
+
   @override
   void onInit() {
     super.onInit();
 
+    ever<UserLogged>(_logged, _checkIsLogged);
+
     initTheme();
+
     checkLogin();
   }
 
@@ -24,9 +31,29 @@ class SplashController extends GetxController {
   }
 
   Future<void> checkLogin() async {
-    // TODO: check if user is logged and redirects to proper page
+    final sp = await SharedPreferences.getInstance();
 
-    await 1.seconds.delay();
-    Get.offNamed(Routes.LOGIN);
+    if (sp.containsKey('user')) {
+      _logged(UserLogged.authenticated);
+    } else {
+      _logged(UserLogged.unauthenticated);
+      await 1.seconds.delay();
+      Get.offNamed(Routes.LOGIN);
+    }
+  }
+
+  void _checkIsLogged(UserLogged userLogged) {
+    switch (userLogged) {
+      case UserLogged.authenticated:
+        Get.offAllNamed(Routes.PLAN_SELECTION);
+        print('indo para home');
+        break;
+      case UserLogged.unauthenticated:
+        Get.offAllNamed(Routes.LOGIN);
+        print('indo para login');
+        break;
+      case UserLogged.empty:
+      default:
+    }
   }
 }
