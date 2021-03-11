@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/shared/bindings/application_bindings.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'app/routes/app_pages.dart';
@@ -18,6 +19,7 @@ void main() {
           debugShowCheckedModeBanner: false,
           initialRoute: AppPages.INITIAL,
           getPages: AppPages.routes,
+          initialBinding: ApplicationBindings(),
           builder: (context, widget) => ResponsiveWrapper.builder(
             BouncingScrollWrapper.builder(context, widget),
             defaultScaleFactor: 1,

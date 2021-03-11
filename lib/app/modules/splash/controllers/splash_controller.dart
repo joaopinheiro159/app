@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:klinimed_app/app/models/user_logged.dart';
+import 'package:klinimed_app/app/data/models/user_logged.dart';
 import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
