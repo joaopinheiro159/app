@@ -32,10 +32,15 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
       message(null);
 
       final user = await _repository.login(cpf, senha);
+      final beneficiario = await _repository.obterBeneficiario(
+          user.planos[0].codBeneficiario, user.token);
+
+      print(beneficiario.toMap());
 
       final sp = await SharedPreferences.getInstance();
 
       await sp.setString('user', user.toJson());
+      await sp.setString('beneficiario', beneficiario.toJson());
 
       loading(false);
       print(user);
