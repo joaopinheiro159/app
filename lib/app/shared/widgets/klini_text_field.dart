@@ -29,6 +29,10 @@ class KliniTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: this.label,
         labelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        errorStyle: TextStyle(color: Colors.white),
+        errorBorder: new UnderlineInputBorder(
+          borderSide: new BorderSide(color: Colors.white, width: 0.0),
+        ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),

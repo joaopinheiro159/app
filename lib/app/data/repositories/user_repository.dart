@@ -7,17 +7,24 @@ class UserRepository {
   UserRepository(this.restClient);
 
   Future<UserModel> login(String cpf, String senha) async {
-    final response = await restClient.post(
+    var response;
+    response = await restClient.post(
       '/usuario/efetuarlogin',
-      {
-        'Cpf': cpf,
-        'Senha': senha,
+      {'Cpf': cpf, 'Senha': senha},
+      decoder: (resp) {
+        print('resposta foi $resp');
+        if (resp['CodRetorno'] != 0) {
+          String message = resp['MsgRetorno'];
+
+          throw Exception(message);
+        }
+
+        return UserModel.fromMap(resp);
       },
-      decoder: (resp) => UserModel.fromMap(resp),
     );
 
     if (response.hasError) {
-      String message = 'Erro ao autenticar o usuário';
+      String message = response.toString();
 
       // tratar erro de senha
       //if (response.statusCode == 403) {}

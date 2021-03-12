@@ -34,6 +34,7 @@ class SplashController extends GetxController {
     final sp = await SharedPreferences.getInstance();
 
     if (sp.containsKey('user')) {
+      print('usuario logado ${sp.get('user')}');
       _logged(UserLogged.authenticated);
     } else {
       _logged(UserLogged.unauthenticated);

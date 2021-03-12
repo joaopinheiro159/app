@@ -23,11 +23,11 @@ class UserModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'codRetorno': codRetorno,
-      'msgRetorno': msgRetorno,
-      'menu': menu,
-      'planos': planos?.map((x) => x?.toMap())?.toList(),
-      'token': token,
+      'CodRetorno': codRetorno,
+      'MsgRetorno': msgRetorno,
+      'Menu': menu,
+      'Planos': planos?.map((x) => x?.toMap())?.toList(),
+      'Token': token,
       'contaGoogle': contaGoogle,
       'senhaGoogle': senhaGoogle,
     };
@@ -37,12 +37,12 @@ class UserModel {
     if (map == null) return null;
 
     return UserModel(
-      codRetorno: map['codRetorno'],
-      msgRetorno: map['msgRetorno'],
-      menu: map['menu'],
+      codRetorno: map['CodRetorno'],
+      msgRetorno: map['MsgRetorno'],
+      menu: map['Menu'],
       planos: List<PlanoModel>.from(
-          map['planos']?.map((x) => PlanoModel.fromMap(x))),
-      token: map['token'],
+          map['Planos']?.map((x) => PlanoModel.fromMap(x)) ?? const []),
+      token: map['Token'],
       contaGoogle: map['contaGoogle'],
       senhaGoogle: map['senhaGoogle'],
     );

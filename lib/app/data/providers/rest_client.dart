@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class RestClient extends GetConnect {
   String baseUrl =
-      'http://vipriosaude-api-mob-beneficiario.topsaude.com.br/api/v1';
+      'https://vipriosaude-api-mob-beneficiario.topsaude.com.br/api/v1';
 
   RestClient() {
     httpClient.baseUrl = baseUrl;

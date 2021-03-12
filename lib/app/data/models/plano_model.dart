@@ -33,19 +33,19 @@ class PlanoModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'categoriaPlano': categoriaPlano,
-      'codBeneficiario': codBeneficiario,
-      'codOperadora': codOperadora,
-      'codPlano': codPlano,
-      'indAtivado': indAtivado,
-      'indComplementarDados': indComplementarDados,
-      'nomeAssociado': nomeAssociado,
-      'nomeOperadora': nomeOperadora,
-      'nomePlano': nomePlano,
-      'numAssociadoOperadora': numAssociadoOperadora,
-      'status': status,
-      'tipoBeneficiario': tipoBeneficiario,
-      'tipoPlano': tipoPlano,
+      'CategoriaPlano': categoriaPlano,
+      'CodBeneficiario': codBeneficiario,
+      'CodOperadora': codOperadora,
+      'CodPlano': codPlano,
+      'IndAtivado': indAtivado,
+      'IndComplementarDados': indComplementarDados,
+      'NomeAssociado': nomeAssociado,
+      'NomeOperadora': nomeOperadora,
+      'NomePlano': nomePlano,
+      'NumAssociadoOperadora': numAssociadoOperadora,
+      'Status': status,
+      'TipoBeneficiario': tipoBeneficiario,
+      'TipoPlano': tipoPlano,
     };
   }
 
@@ -53,19 +53,19 @@ class PlanoModel {
     if (map == null) return null;
 
     return PlanoModel(
-      categoriaPlano: map['categoriaPlano'],
-      codBeneficiario: map['codBeneficiario'],
-      codOperadora: map['codOperadora'],
-      codPlano: map['codPlano'],
-      indAtivado: map['indAtivado'],
-      indComplementarDados: map['indComplementarDados'],
-      nomeAssociado: map['nomeAssociado'],
-      nomeOperadora: map['nomeOperadora'],
-      nomePlano: map['nomePlano'],
-      numAssociadoOperadora: map['numAssociadoOperadora'],
-      status: map['status'],
-      tipoBeneficiario: map['tipoBeneficiario'],
-      tipoPlano: map['tipoPlano'],
+      categoriaPlano: map['CategoriaPlano'] ?? '',
+      codBeneficiario: map['CodBeneficiario'] ?? '',
+      codOperadora: map['CodOperadora'] ?? '',
+      codPlano: map['CodPlano'] ?? '',
+      indAtivado: map['IndAtivado'] ?? '',
+      indComplementarDados: map['IndComplementarDados'] ?? '',
+      nomeAssociado: map['NomeAssociado'] ?? '',
+      nomeOperadora: map['NomeOperadora'] ?? '',
+      nomePlano: map['NomePlano'] ?? '',
+      numAssociadoOperadora: map['NumAssociadoOperadora'] ?? '',
+      status: map['Status'] ?? '',
+      tipoBeneficiario: map['TipoBeneficiario'] ?? '',
+      tipoPlano: map['TipoPlano'] ?? '',
     );
   }
 
