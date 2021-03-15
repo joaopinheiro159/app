@@ -45,15 +45,15 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
       loading(false);
       print(user);
 
-      Get.offAllNamed(Routes.SPLASH);
+      Get.offAllNamed(Routes.PLAN_SELECTION);
     } on RestClientException catch (e) {
       print(e);
       loading(false);
-      message(MessageModel('Erro', e.message));
+      message(MessageModel('Alerta', e.message));
     } catch (e) {
       print(e);
       loading(false);
-      message(MessageModel('Erro', 'Usuário ou senha inválidos'));
+      message(MessageModel('Alerta', 'Usuário ou senha inválidos'));
     }
   }
 }

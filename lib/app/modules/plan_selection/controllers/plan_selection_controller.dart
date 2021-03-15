@@ -1,12 +1,35 @@
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/data/models/beneficiario_model.dart';
+import 'package:klinimed_app/app/data/models/user_model.dart';
+import 'package:klinimed_app/app/routes/app_pages.dart';
+import 'package:klinimed_app/app/shared/controllers/user_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class PlanSelectionController extends GetxController {
-  //TODO: Implement PlanSelectionController
+class PlanSelectionController extends GetxController with StateMixin {
+  final UserController _userController =
+      Get.put<UserController>(UserController());
 
-  final count = 0.obs;
+  UserModel get user => _userController.user;
+  BeneficiarioModel get beneficiario => _userController.beneficiario;
+
   @override
   void onInit() {
     super.onInit();
+
+    loadUserDetails();
+  }
+
+  //TODO: melhorar isso
+  Future<void> loadUserDetails() async {
+    change([], status: RxStatus.loading());
+
+    try {
+      await SharedPreferences.getInstance();
+
+      change([], status: RxStatus.success());
+    } catch (e) {
+      change([], status: RxStatus.error());
+    }
   }
 
   @override
@@ -16,5 +39,11 @@ class PlanSelectionController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
+
+  Future<void> logout() async {
+    final sp = await SharedPreferences.getInstance();
+    sp.clear();
+
+    Get.offAllNamed(Routes.LOGIN);
+  }
 }

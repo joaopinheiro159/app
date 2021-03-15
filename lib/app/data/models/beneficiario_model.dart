@@ -39,6 +39,9 @@ class BeneficiarioModel {
   @override
   String toString() =>
       'BeneficiarioModel(codRetorno: $codRetorno, msgRetorno: $msgRetorno, beneficiario: $beneficiario)';
+
+  factory BeneficiarioModel.fromJson(String source) =>
+      BeneficiarioModel.fromMap(json.decode(source));
 }
 
 class Beneficiario {
