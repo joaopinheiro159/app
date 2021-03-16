@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/data/models/user_model.dart';
 import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
+import 'package:klinimed_app/app/shared/widgets/plan_selection_button.dart';
 
 import '../controllers/plan_selection_controller.dart';
 
@@ -85,80 +87,11 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
             SizedBox(
               height: 20,
             ),
-            Container(
-              width: Get.width * 0.80,
-              height: 50,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  backgroundColor: Colors.white,
-                ),
-                onPressed: () {
-                  Get.toNamed(Routes.MENU);
-                },
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Icon(
-                      FontAwesomeIcons.heartbeat,
-                      color: MainTheme.backgroundColor,
-                    ),
-                    Text(
-                      'KLINI FÁCIL - 999999999',
-                      style: TextStyle(
-                          color: MainTheme.backgroundColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13),
-                    ),
-                    Icon(
-                      Icons.check_circle_rounded,
-                      color: MainTheme.backgroundColor,
-                    ),
-                  ],
-                ),
+            for (var plano in controller.user.planos)
+              PlanSelectionButton(
+                nomePlano: plano.nomePlano,
+                codBeneficiario: plano.codBeneficiario,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: Get.width * 0.80,
-              height: 50,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: MainTheme.backgroundColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    side: BorderSide(color: Colors.white),
-                  ),
-                ),
-                onPressed: () {},
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Icon(
-                      FontAwesomeIcons.tooth,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      'KLINI DENTAL FÁCIL - 888888888',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13),
-                    ),
-                    Icon(
-                      Icons.check_circle_rounded,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-              ),
-            ),
             SizedBox(
               height: 50,
             ),
@@ -195,6 +128,8 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
     );
   }
 }
+
+
 
 
 // import 'package:flutter/material.dart';

@@ -1,10 +1,9 @@
 import 'package:get/get.dart';
 import 'package:klinimed_app/app/data/models/beneficiario_model.dart';
 import 'package:klinimed_app/app/data/models/user_model.dart';
-import 'package:klinimed_app/app/shared/helpers/loader_mixin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserController extends GetxController with LoaderMixin {
+class UserController extends GetxController {
   final _user = Rx<UserModel>();
   final _beneficiario = Rx<BeneficiarioModel>();
 

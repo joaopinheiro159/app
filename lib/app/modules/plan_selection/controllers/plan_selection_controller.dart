@@ -19,14 +19,11 @@ class PlanSelectionController extends GetxController with StateMixin {
     loadUserDetails();
   }
 
-  //TODO: melhorar isso
   Future<void> loadUserDetails() async {
     change([], status: RxStatus.loading());
 
     try {
-      await SharedPreferences.getInstance();
-
-      change([], status: RxStatus.success());
+      change(await SharedPreferences.getInstance(), status: RxStatus.success());
     } catch (e) {
       change([], status: RxStatus.error());
     }
