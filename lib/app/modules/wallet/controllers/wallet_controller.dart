@@ -1,12 +1,14 @@
 import 'package:get/get.dart';
 
 class WalletController extends GetxController {
-  //TODO: Implement WalletController
+  dynamic _beneficiario;
 
-  final count = 0.obs;
+  dynamic get beneficiario => _beneficiario;
+
   @override
   void onInit() {
     super.onInit();
+    _beneficiario = Get.arguments;
   }
 
   @override
@@ -16,5 +18,4 @@ class WalletController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

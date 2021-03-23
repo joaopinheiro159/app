@@ -78,7 +78,14 @@ class WalletView extends GetView<WalletController> {
           SizedBox(
             height: 10,
           ),
-          Center(child: VerticalWallet()),
+          Center(
+              child: VerticalWallet(
+            nomeBeneficiario: controller.beneficiario.nomeCartao,
+            numeroCarteira: controller.beneficiario.numeroAssociado,
+            plano: controller.beneficiario.nomePlano,
+            segmentacao: controller.beneficiario.segmentacao,
+            vigencia: controller.beneficiario.inicioVigencia,
+          )),
           Expanded(
             child: Container(),
           ),

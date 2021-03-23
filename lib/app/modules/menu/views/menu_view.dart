@@ -118,7 +118,8 @@ class MenuView extends GetView<MenuController> {
                             vigencia: i.beneficiario.inicioVigencia,
                           ),
                           onTap: () {
-                            Get.toNamed(Routes.WALLET);
+                            Get.toNamed(Routes.WALLET,
+                                arguments: i.beneficiario);
                           },
                         );
                       },

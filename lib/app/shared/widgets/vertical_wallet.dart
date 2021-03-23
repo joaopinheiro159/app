@@ -3,7 +3,20 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 
 class VerticalWallet extends StatelessWidget {
-  const VerticalWallet({Key key}) : super(key: key);
+  final String nomeBeneficiario;
+  final String numeroCarteira;
+  final String plano;
+  final String segmentacao;
+  final String vigencia;
+
+  const VerticalWallet(
+      {Key key,
+      this.nomeBeneficiario,
+      this.numeroCarteira,
+      this.plano,
+      this.segmentacao,
+      this.vigencia})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +45,7 @@ class VerticalWallet extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '2020110020',
+                        this.numeroCarteira,
                         style: TextStyle(
                             color: Colors.white, fontSize: descriptionSize),
                       ),
@@ -45,7 +58,7 @@ class VerticalWallet extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        'MÁRCIO ANTÔNIO ROCHA DA CRUZ',
+                        this.nomeBeneficiario,
                         style: TextStyle(
                             color: Colors.white, fontSize: descriptionSize),
                       ),
@@ -58,7 +71,7 @@ class VerticalWallet extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        'KLINI FÁCIL PF',
+                        this.plano,
                         style: TextStyle(
                             color: Colors.white, fontSize: descriptionSize),
                       ),
@@ -71,7 +84,7 @@ class VerticalWallet extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        'Ambulatorial, Hospitalar com Obstetrícia',
+                        this.segmentacao,
                         style: TextStyle(
                             color: Colors.white, fontSize: descriptionSize),
                       ),
@@ -84,7 +97,7 @@ class VerticalWallet extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        '10/10/2020',
+                        this.vigencia,
                         style: TextStyle(
                             color: Colors.white, fontSize: descriptionSize),
                       ),

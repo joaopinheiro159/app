@@ -31,7 +31,7 @@ class MenuController extends GetxController
     super.onInit();
 
     print(Get.parameters['codbeneficiario']);
-    _beneficiarios.add(_userController.beneficiario);
+
     loadUserDetails();
     //obterDependentes();
   }
@@ -47,6 +47,11 @@ class MenuController extends GetxController
   Future<DependentesModel> obterDependentes() async {
     final dependentes = await _repository.getDependents(
         Get.parameters['codbeneficiario'], user.token);
+
+    final beneficiarioAtual = await _repository.obterBeneficiario(
+        Get.parameters['codbeneficiario'], user.token);
+
+    _beneficiarios.add(beneficiarioAtual);
 
     for (var dep in dependentes.dependente) {
       print(dep.codigoAssociado);
