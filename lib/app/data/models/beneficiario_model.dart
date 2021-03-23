@@ -24,7 +24,7 @@ class BeneficiarioModel {
   factory BeneficiarioModel.fromMap(Map<String, dynamic> json) =>
       BeneficiarioModel(
         codRetorno: json["CodRetorno"],
-        msgRetorno: json["MsgRetorno"],
+        msgRetorno: json["MsgRetorno"] == null ? '' : json["MsgRetorno"],
         beneficiario: Beneficiario.fromMap(json["Beneficiario"]),
       );
 
@@ -123,9 +123,9 @@ class Beneficiario {
         contrato: json["Contrato"],
         dtInclusaoPlano: json["DtInclusaoPlano"],
         dtNascimento: json["DtNascimento"],
-        dtTerminoCpt: json["DtTerminoCpt"],
+        dtTerminoCpt: json["DtTerminoCpt"] == null ? '' : json["DtTerminoCpt"],
         emails: List<Email>.from(json["Emails"].map((x) => Email.fromMap(x))),
-        empresa: json["Empresa"],
+        empresa: json["Empresa"] == null ? '' : json["Empresa"],
         enderecos: List<Endereco>.from(
             json["Enderecos"].map((x) => Endereco.fromMap(x))),
         idContratoClasse: json["IdContratoClasse"],
@@ -140,8 +140,10 @@ class Beneficiario {
         nomeMae: json["NomeMae"],
         nomePlano: json["NomePlano"],
         numeroAssociado: json["NumeroAssociado"],
-        numeroAssociadoOperadora: json["NumeroAssociadoOperadora"],
-        numeroPis: json["NumeroPis"],
+        numeroAssociadoOperadora: json["NumeroAssociadoOperadora"] == null
+            ? ''
+            : json["NumeroAssociadoOperadora"],
+        numeroPis: json["NumeroPis"] == null ? '' : json["NumeroPis"],
         planoRegulamentado: json["PlanoRegulamentado"],
         registroAns: json["RegistroANS"],
         segmentacao: json["Segmentacao"],

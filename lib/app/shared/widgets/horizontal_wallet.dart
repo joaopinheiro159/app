@@ -3,7 +3,20 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 
 class HorizontalWallet extends StatelessWidget {
-  const HorizontalWallet({Key key}) : super(key: key);
+  final String nomeBeneficiario;
+  final String numeroCarteira;
+  final String plano;
+  final String segmentacao;
+  final String vigencia;
+
+  const HorizontalWallet(
+      {Key key,
+      this.nomeBeneficiario,
+      this.numeroCarteira,
+      this.plano,
+      this.segmentacao,
+      this.vigencia})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +40,7 @@ class HorizontalWallet extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '2020110020',
+                      this.numeroCarteira,
                       style: TextStyle(color: Colors.white),
                     ),
                     Text(
@@ -35,7 +48,7 @@ class HorizontalWallet extends StatelessWidget {
                       style: TextStyle(color: Colors.white54, fontSize: 10),
                     ),
                     Text(
-                      'MÁRCIO ANTÔNIO ROCHA DA CRUZ',
+                      this.nomeBeneficiario,
                       style: TextStyle(color: Colors.white, fontSize: 11),
                     ),
                     Text(
@@ -43,7 +56,7 @@ class HorizontalWallet extends StatelessWidget {
                       style: TextStyle(color: Colors.white54, fontSize: 10),
                     ),
                     Text(
-                      'KLINI FÁCIL PF',
+                      this.plano,
                       style: TextStyle(color: Colors.white, fontSize: 11),
                     ),
                     Text(
@@ -51,7 +64,7 @@ class HorizontalWallet extends StatelessWidget {
                       style: TextStyle(color: Colors.white54, fontSize: 10),
                     ),
                     Text(
-                      'Ambulatorial, Hospitalar com Obstetrícia',
+                      this.segmentacao,
                       style: TextStyle(color: Colors.white, fontSize: 11),
                     ),
                     Text(
@@ -59,7 +72,7 @@ class HorizontalWallet extends StatelessWidget {
                       style: TextStyle(color: Colors.white54, fontSize: 10),
                     ),
                     Text(
-                      '10/10/2020',
+                      this.vigencia,
                       style: TextStyle(color: Colors.white, fontSize: 11),
                     ),
                     Text(

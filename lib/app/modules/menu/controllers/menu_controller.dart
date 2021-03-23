@@ -8,7 +8,8 @@ import 'package:klinimed_app/app/shared/helpers/loader_mixin.dart';
 import 'package:klinimed_app/app/shared/helpers/messages_mixin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MenuController extends GetxController with LoaderMixin, MessagesMixin {
+class MenuController extends GetxController
+    with LoaderMixin, MessagesMixin, StateMixin {
   final UserController _userController =
       Get.put<UserController>(UserController());
   final UserRepository _repository;
@@ -16,15 +17,22 @@ class MenuController extends GetxController with LoaderMixin, MessagesMixin {
   final loading = false.obs;
   final message = Rx<MessageModel>();
 
+  List<BeneficiarioModel> _beneficiarios = [];
+
+  List<BeneficiarioModel> get beneficiarios => _beneficiarios;
+
   MenuController(this._repository);
 
   UserModel get user => _userController.user;
   BeneficiarioModel get beneficiario => _userController.beneficiario;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+
+    print(Get.parameters['codbeneficiario']);
+    loadUserDetails();
+    //obterDependentes();
   }
 
   @override
@@ -34,5 +42,27 @@ class MenuController extends GetxController with LoaderMixin, MessagesMixin {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
+
+  Future<DependentesModel> obterDependentes() async {
+    final dependentes = await _repository.getDependents(
+        Get.parameters['codbeneficiario'], user.token);
+
+    for (var dep in dependentes.dependente) {
+      print(dep.codigoAssociado);
+      final informacoesBeneficiario =
+          await _repository.obterBeneficiario(dep.codigoAssociado, user.token);
+
+      _beneficiarios.add(informacoesBeneficiario);
+    }
+  }
+
+  Future<void> loadUserDetails() async {
+    change([], status: RxStatus.loading());
+
+    try {
+      change(await obterDependentes(), status: RxStatus.success());
+    } catch (e) {
+      change([], status: RxStatus.error());
+    }
+  }
 }

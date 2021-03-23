@@ -26,7 +26,8 @@ class PlanSelectionButton extends StatelessWidget {
               backgroundColor: Colors.white,
             ),
             onPressed: () {
-              Get.toNamed(Routes.MENU);
+              Get.toNamed(Routes.MENU,
+                  parameters: {"codbeneficiario": codBeneficiario});
             },
             child: Row(
               mainAxisSize: MainAxisSize.max,
