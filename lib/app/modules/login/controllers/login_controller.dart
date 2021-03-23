@@ -37,10 +37,22 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
 
       print(beneficiario.toMap());
 
+      final dependentesSaude = await _repository.getDependents(
+          user.planos[0].codBeneficiario, user.token);
+
+      final dependentesDental = await _repository.getDependents(
+          user.planos[1].codBeneficiario, user.token);
+
+      print(dependentesSaude);
+      print(dependentesDental);
+
       final sp = await SharedPreferences.getInstance();
 
       await sp.setString('user', user.toJson());
       await sp.setString('beneficiario', beneficiario.toJson());
+
+      await sp.setString('dependentesSaude', dependentesSaude.toJson());
+      await sp.setString('dependentesDental', dependentesDental.toJson());
 
       loading(false);
       print(user);
