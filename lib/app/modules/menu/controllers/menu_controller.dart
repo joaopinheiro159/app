@@ -31,6 +31,7 @@ class MenuController extends GetxController
     super.onInit();
 
     print(Get.parameters['codbeneficiario']);
+    _beneficiarios.add(_userController.beneficiario);
     loadUserDetails();
     //obterDependentes();
   }
