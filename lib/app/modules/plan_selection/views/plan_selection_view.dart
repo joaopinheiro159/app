@@ -103,7 +103,9 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
                 height: 50,
                 label: 'Alterar Senha',
                 labelSize: 15,
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.CHANGE_PASSWORD);
+                },
               ),
             ),
             Expanded(
