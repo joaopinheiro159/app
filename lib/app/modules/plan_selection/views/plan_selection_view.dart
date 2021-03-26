@@ -8,6 +8,7 @@ import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
 import 'package:klinimed_app/app/shared/widgets/plan_selection_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../controllers/plan_selection_controller.dart';
 
@@ -105,6 +106,24 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
                 labelSize: 15,
                 onPressed: () {
                   Get.toNamed(Routes.CHANGE_PASSWORD);
+                },
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: Get.width * 0.80,
+              child: KliniButton(
+                buttonColor: Colors.white,
+                labelColor: MainTheme.backgroundColor,
+                height: 50,
+                label: 'Renovar Acesso',
+                labelSize: 15,
+                onPressed: () async {
+                  final sp = await SharedPreferences.getInstance();
+                  await sp.reload();
+                  print('acesso renovado');
                 },
               ),
             ),

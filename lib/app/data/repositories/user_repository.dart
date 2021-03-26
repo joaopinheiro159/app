@@ -1,5 +1,4 @@
 import 'package:klinimed_app/app/data/models/beneficiario_model.dart';
-import 'package:klinimed_app/app/data/models/change_password_model.dart';
 import 'package:klinimed_app/app/data/models/dependentes_model.dart';
 import 'package:klinimed_app/app/data/models/user_model.dart';
 import 'package:klinimed_app/app/data/providers/rest_client.dart';
@@ -70,20 +69,16 @@ class UserRepository {
       },
       decoder: (resp) {
         print('resposta foi $resp');
-        if (resp['CodRetorno'] != 0) {
-          String message = resp['MsgRetorno'];
-
-          throw Exception(message);
+        if (resp is! String) {
+          return DependentesModel.fromMap(resp);
         }
-
-        return DependentesModel.fromMap(resp);
+        return null;
       },
     );
 
-    if (response.hasError) {
-      String message = response.toString();
-
-      throw RestClientException(message);
+    if (response.statusCode == 401) {
+      throw RestClientException(
+          'Por questões de segurança, seu acesso expirou. Renovando credenciais de acesso');
     }
 
     return response.body;
@@ -112,32 +107,3 @@ class UserRepository {
     return response.body;
   }
 }
-
-  // Future<ChangePasswordModel> changePassword(String cpf, String currentPassword,
-  //     String newPassword, String token) async {
-  //   final response = await restClient.post(
-  //     '/usuario/AlterarSenha',
-  //     {'Cpf': cpf, 'SenhaAtual': currentPassword, 'NovaSenha': newPassword},
-  //     headers: {
-  //       'contentType': 'application/json',
-  //       'Authorization': 'Bearer $token'
-  //     },
-  //     decoder: (resp) {
-  //       print('resposta foi $resp');
-  //       if (resp['CodRetorno'] != 0) {
-  //         return ChangePasswordModel.fromMap(resp);
-  //       }
-
-  //       return ChangePasswordModel.fromMap(resp);
-  //     },
-  //   );
-
-  //   if (response.hasError) {
-  //     String message = response.toString();
-
-  //     throw RestClientException(message);
-  //   }
-
-  //   return response.body;
-  // }
-
