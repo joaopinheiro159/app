@@ -26,6 +26,16 @@ class HorizontalWallet extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
+          Text(
+            this.nomeBeneficiario,
+            style: TextStyle(
+                color: MainTheme.backgroundColor,
+                fontSize: 12,
+                fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Stack(
             children: [
               Image.asset(

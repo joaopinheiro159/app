@@ -100,7 +100,7 @@ class MenuView extends GetView<MenuController> {
                 ),
                 CarouselSlider(
                   options: CarouselOptions(
-                    height: 200.0,
+                    height: 230.0,
                     viewportFraction: 0.7,
                     pageSnapping: true,
                     disableCenter: false,
