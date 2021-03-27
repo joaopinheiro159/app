@@ -1,5 +1,6 @@
 import 'package:klinimed_app/app/data/models/beneficiario_model.dart';
 import 'package:klinimed_app/app/data/models/dependentes_model.dart';
+import 'package:klinimed_app/app/data/models/forgot_password_model.dart';
 import 'package:klinimed_app/app/data/models/user_model.dart';
 import 'package:klinimed_app/app/data/providers/rest_client.dart';
 
@@ -103,6 +104,22 @@ class UserRepository {
     if (response.hasError) {
       throw Exception('Erro ao buscar usuários');
     }
+
+    return response.body;
+  }
+
+  Future<ForgotPasswordModel> forgotPassword(String cpf, String email) async {
+    final response = await restClient.post(
+      '/usuario/ReenviarSenha',
+      {"Cpf": cpf, "Email": email, "MetodoEnvio": "1"},
+      headers: {'contentType': 'application/json'},
+      decoder: (resp) {
+        if (resp is! String) {
+          return ForgotPasswordModel.fromMap(resp);
+        }
+        return null;
+      },
+    );
 
     return response.body;
   }

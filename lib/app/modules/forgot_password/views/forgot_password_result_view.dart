@@ -35,7 +35,7 @@ class ForgotPasswordResultView extends GetView<ForgotPasswordController> {
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    'email@email.com.br',
+                    Get.parameters['email'],
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,
