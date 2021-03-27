@@ -10,6 +10,7 @@ import 'package:klinimed_app/app/shared/widgets/horizontal_wallet.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
 import 'package:klinimed_app/app/shared/widgets/menu_card.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MenuView extends GetView<MenuController> {
   @override
@@ -141,11 +142,19 @@ class MenuView extends GetView<MenuController> {
                   ),
                 ),
                 SizedBox(height: 10),
-                MenuCard(
-                  icon: FontAwesomeIcons.commentMedical,
-                  title: 'Médico de Referência',
-                  description:
-                      'Faça um primeiro atendimento com seu médico de referência.',
+                GestureDetector(
+                  onTap: () async {
+                    final _url = 'https://agendar.amplimed.com.br/klini';
+                    await canLaunch(_url)
+                        ? await launch(_url)
+                        : throw 'Could not launch $_url';
+                  },
+                  child: MenuCard(
+                    icon: FontAwesomeIcons.commentMedical,
+                    title: 'Médico de Referência',
+                    description:
+                        'Faça um primeiro atendimento com seu médico de referência.',
+                  ),
                 ),
                 SizedBox(height: 10),
                 MenuCard(
