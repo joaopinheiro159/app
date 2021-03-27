@@ -109,24 +109,6 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
                 },
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: Get.width * 0.80,
-              child: KliniButton(
-                buttonColor: Colors.white,
-                labelColor: MainTheme.backgroundColor,
-                height: 50,
-                label: 'Renovar Acesso',
-                labelSize: 15,
-                onPressed: () async {
-                  final sp = await SharedPreferences.getInstance();
-                  await sp.reload();
-                  print('acesso renovado');
-                },
-              ),
-            ),
             Expanded(
               child: Container(),
             ),

@@ -53,7 +53,9 @@ class ChangePasswordController extends GetxController
 
       loading(false);
       if (changePassword) {
-        Get.offAllNamed(Routes.PLAN_SELECTION);
+        Get.offAllNamed(Routes.LOGIN);
+
+        await sp.clear();
 
         Get.defaultDialog(
           title: 'Aviso',
@@ -61,7 +63,7 @@ class ChangePasswordController extends GetxController
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
-          middleText: 'Senha alterada com sucesso.',
+          middleText: 'Senha alterada com sucesso. Você deve entrar novamente',
           middleTextStyle: TextStyle(
             color: Colors.white,
           ),
