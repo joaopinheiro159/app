@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:get/get.dart';
 import 'package:klinimed_app/app/shared/bindings/application_bindings.dart';
@@ -15,6 +16,14 @@ void main() {
     (_) {
       runApp(
         GetMaterialApp(
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: [
+            const Locale('pt'),
+          ],
           title: "Application",
           debugShowCheckedModeBanner: false,
           initialRoute: AppPages.INITIAL,

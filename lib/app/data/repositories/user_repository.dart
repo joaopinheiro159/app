@@ -31,6 +31,33 @@ class UserRepository {
     return response.body;
   }
 
+  Future<UserModel> register(
+      String cpf, String senha, String dataNascimento) async {
+    var errorMessage = '';
+    final response = await restClient.post(
+      '/usuario/efetuarlogin',
+      {
+        'Cpf': cpf,
+        'Senha': senha,
+        "IsPrimeiroLogin": true,
+        "DtNascimento": dataNascimento
+      },
+      decoder: (resp) {
+        if (resp['CodRetorno'] == 0) {
+          return UserModel.fromMap(resp);
+        }
+
+        errorMessage = resp['MsgRetorno'];
+      },
+    );
+
+    if (errorMessage != '') {
+      throw RestClientException(errorMessage);
+    }
+
+    return response.body;
+  }
+
   Future<BeneficiarioModel> obterBeneficiario(
       String codBeneficiario, String token) async {
     final response = await restClient.get(
