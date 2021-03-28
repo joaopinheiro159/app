@@ -15,6 +15,7 @@ abstract class Routes {
   static const REFERENCED_SEARCH = _Paths.REFERENCED_SEARCH;
   static const REFERENCED_SEARCH_RESULT = _Paths.REFERENCED_SEARCH_RESULT;
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const CENTRAL = _Paths.CENTRAL;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const REFERENCED_SEARCH = '/referenced-search';
   static const REFERENCED_SEARCH_RESULT = '/referenced-search-result';
   static const CHANGE_PASSWORD = '/change-password';
+  static const CENTRAL = '/central';
 }

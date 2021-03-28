@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:klinimed_app/app/modules/central/bindings/central_binding.dart';
+import 'package:klinimed_app/app/modules/central/views/central_view.dart';
 import 'package:klinimed_app/app/modules/change_password/bindings/change_password_binding.dart';
 import 'package:klinimed_app/app/modules/change_password/views/change_password_view.dart';
 import 'package:klinimed_app/app/modules/forgot_password/bindings/forgot_password_binding.dart';
@@ -95,6 +97,11 @@ class AppPages {
       name: _Paths.CHANGE_PASSWORD,
       page: () => ChangePasswordView(),
       binding: ChangePasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.CENTRAL,
+      page: () => CentralView(),
+      binding: CentralBinding(),
     ),
   ];
 }

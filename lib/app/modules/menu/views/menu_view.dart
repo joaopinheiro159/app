@@ -164,11 +164,16 @@ class MenuView extends GetView<MenuController> {
                       'Consulte ser histórico de pagamento, segunda via, boleto digital, imposto de renda…',
                 ),
                 SizedBox(height: 10),
-                MenuCard(
-                  icon: FontAwesomeIcons.clock,
-                  title: 'Central 24h',
-                  description:
-                      'Programas de saúde 24 horas, consultas, exames, procedimentos…',
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.CENTRAL);
+                  },
+                  child: MenuCard(
+                    icon: FontAwesomeIcons.clock,
+                    title: 'Central 24h',
+                    description:
+                        'Programas de saúde 24 horas, consultas, exames, procedimentos…',
+                  ),
                 ),
                 SizedBox(
                   height: 20,
