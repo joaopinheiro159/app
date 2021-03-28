@@ -53,6 +53,9 @@ class RegisterView extends GetView<RegisterController> {
               Container(
                 width: Get.width * 0.80,
                 child: KliniTextPickerField(
+                  onTap: () async {
+                    await _showPicker(context);
+                  },
                   label: 'Data de Nascimento',
                   controller: controller.birthDateTextEditingController,
                   suffixIcon: Icon(Icons.calendar_today_outlined),
@@ -62,34 +65,7 @@ class RegisterView extends GetView<RegisterController> {
                     }
                     return null;
                   },
-                  suffixIconOnPressed: () async {
-                    DateTime picked = await showDatePicker(
-                      context: context,
-                      initialDate: new DateTime.now(),
-                      firstDate: new DateTime(1900),
-                      lastDate: new DateTime.now(),
-                      builder: (context, Widget child) {
-                        return Theme(
-                          data: ThemeData.light().copyWith(
-                            primaryColor: MainTheme.backgroundColor,
-                            accentColor: const Color(0xFF8CE7F1),
-                            colorScheme: ColorScheme.light(
-                              primary: MainTheme.backgroundColor,
-                            ),
-                            buttonTheme: ButtonThemeData(
-                              textTheme: ButtonTextTheme.primary,
-                            ),
-                          ),
-                          child: child,
-                        );
-                      },
-                    );
-                    if (picked != null) {
-                      DateFormat dateFormat = DateFormat("dd-MM-yyyy");
-                      controller.birthDateTextEditingController.text =
-                          dateFormat.format(picked);
-                    }
-                  },
+                  suffixIconOnPressed: () async {},
                 ),
               ),
               Container(
@@ -180,5 +156,34 @@ class RegisterView extends GetView<RegisterController> {
         ),
       ),
     );
+  }
+
+  Future _showPicker(BuildContext context) async {
+    DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: new DateTime.now(),
+      firstDate: new DateTime(1900),
+      lastDate: new DateTime.now(),
+      builder: (context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: MainTheme.backgroundColor,
+            accentColor: const Color(0xFF8CE7F1),
+            colorScheme: ColorScheme.light(
+              primary: MainTheme.backgroundColor,
+            ),
+            buttonTheme: ButtonThemeData(
+              textTheme: ButtonTextTheme.primary,
+            ),
+          ),
+          child: child,
+        );
+      },
+    );
+    if (picked != null) {
+      DateFormat dateFormat = DateFormat("dd-MM-yyyy");
+      controller.birthDateTextEditingController.text =
+          dateFormat.format(picked);
+    }
   }
 }

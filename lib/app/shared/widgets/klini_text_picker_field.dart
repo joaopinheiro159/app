@@ -5,6 +5,7 @@ class KliniTextPickerField extends StatelessWidget {
   final Icon suffixIcon;
   final Function suffixIconOnPressed;
   final bool obscureText;
+  final Function onTap;
   final FormFieldValidator<String> validator;
   final TextEditingController controller;
   final String initialValue;
@@ -15,6 +16,7 @@ class KliniTextPickerField extends StatelessWidget {
     this.suffixIcon,
     this.suffixIconOnPressed,
     this.obscureText = false,
+    this.onTap,
     this.validator,
     this.controller,
     this.initialValue,
@@ -24,6 +26,7 @@ class KliniTextPickerField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: this.controller,
+      onTap: this.onTap,
       readOnly: true,
       obscureText: this.obscureText,
       validator: this.validator,
