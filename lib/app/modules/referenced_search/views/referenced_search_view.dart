@@ -1,5 +1,11 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/data/models/bairro_model.dart';
+import 'package:klinimed_app/app/data/models/cidade_model.dart';
+import 'package:klinimed_app/app/data/models/especialidade_model.dart';
 import 'package:klinimed_app/app/modules/referenced_search/controllers/referenced_search_controller.dart';
 import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
@@ -77,24 +83,25 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
           Container(
             width: Get.width * 0.8,
             height: 50,
-            child: DropdownSearch<String>(
-              mode: Mode.MENU,
-              showSelectedItem: true,
-              items: ["Brazil", "Italia (Disabled)", "Tunisia", 'Canada'],
-              hint: "country in menu mode",
-              popupItemDisabled: (String s) => s.startsWith('I'),
-              onChanged: print,
-              selectedItem: "Informe o bairro",
+            child: DropdownSearch<CidadeModel>(
+              maxHeight: 300,
+              onFind: (String filter) => controller.getCidades(),
+              onChanged: (cidade) {
+                controller.codCidade.value = cidade.codCidade;
+              },
+              selectedItem: CidadeModel(nome: 'Informe a cidade'),
               dropdownBuilder:
-                  (BuildContext context, String item, String itemAsString) {
+                  (BuildContext context, item, String itemAsString) {
                 return Text(
                   itemAsString,
                   style: TextStyle(
-                      fontSize: 18.0,
-                      color: Color(0XFF7B9EB1),
-                      fontWeight: FontWeight.bold),
+                    fontSize: 18.0,
+                    color: Color(0XFF7B9EB1),
+                    fontWeight: FontWeight.bold,
+                  ),
                 );
               },
+              showSearchBox: true,
               dropdownSearchDecoration: InputDecoration(
                 border: new OutlineInputBorder(
                   borderSide: BorderSide(
@@ -120,24 +127,25 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
           Container(
             width: Get.width * 0.8,
             height: 50,
-            child: DropdownSearch<String>(
-              mode: Mode.MENU,
-              showSelectedItem: true,
-              items: ["Brazil", "Tunisia", 'Canada'],
-              hint: "country in menu mode",
-              popupItemDisabled: (String s) => s.startsWith('I'),
-              onChanged: print,
-              selectedItem: "Informe a cidade",
+            child: DropdownSearch<BairroModel>(
+              maxHeight: 300,
+              onFind: (String filter) => controller.getBairros(),
+              onChanged: (bairro) {
+                print(bairro.codBairro);
+              },
+              selectedItem: BairroModel(nome: 'Informe o bairro'),
               dropdownBuilder:
-                  (BuildContext context, String item, String itemAsString) {
+                  (BuildContext context, item, String itemAsString) {
                 return Text(
                   itemAsString,
                   style: TextStyle(
-                      fontSize: 18.0,
-                      color: Color(0XFF7B9EB1),
-                      fontWeight: FontWeight.bold),
+                    fontSize: 18.0,
+                    color: Color(0XFF7B9EB1),
+                    fontWeight: FontWeight.bold,
+                  ),
                 );
               },
+              showSearchBox: true,
               dropdownSearchDecoration: InputDecoration(
                 border: new OutlineInputBorder(
                   borderSide: BorderSide(
@@ -163,67 +171,26 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
           Container(
             width: Get.width * 0.8,
             height: 50,
-            child: DropdownSearch<String>(
-              mode: Mode.MENU,
-              showSelectedItem: true,
-              items: ["Brazil", "Tunisia", 'Canada'],
-              hint: "country in menu mode",
-              popupItemDisabled: (String s) => s.startsWith('I'),
-              onChanged: print,
-              selectedItem: "Informe a especialidade",
+            child: DropdownSearch<EspecialidadeModel>(
+              maxHeight: 300,
+              onFind: (String filter) => controller.getEspecialidade(),
+              onChanged: (especialidade) {
+                print(especialidade.codEspecialidade);
+              },
+              selectedItem:
+                  EspecialidadeModel(descricao: 'Informe a especialidade'),
               dropdownBuilder:
-                  (BuildContext context, String item, String itemAsString) {
+                  (BuildContext context, item, String itemAsString) {
                 return Text(
                   itemAsString,
                   style: TextStyle(
-                      fontSize: 18.0,
-                      color: Color(0XFF7B9EB1),
-                      fontWeight: FontWeight.bold),
+                    fontSize: 18.0,
+                    color: Color(0XFF7B9EB1),
+                    fontWeight: FontWeight.bold,
+                  ),
                 );
               },
-              dropdownSearchDecoration: InputDecoration(
-                border: new OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: MainTheme.backgroundColor,
-                    width: 2,
-                  ),
-                  borderRadius: new BorderRadius.circular(10.0),
-                ),
-                contentPadding: EdgeInsets.fromLTRB(12, 12, 8, 0),
-                enabledBorder: new OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: MainTheme.backgroundColor,
-                    width: 2,
-                  ),
-                  borderRadius: new BorderRadius.circular(10.0),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            width: Get.width * 0.8,
-            height: 50,
-            child: DropdownSearch<String>(
-              mode: Mode.MENU,
-              showSelectedItem: true,
-              items: ["Brazil", "Tunisia", 'Canada'],
-              hint: "country in menu mode",
-              popupItemDisabled: (String s) => s.startsWith('I'),
-              onChanged: print,
-              selectedItem: "Nome do prestador/hospital",
-              dropdownBuilder:
-                  (BuildContext context, String item, String itemAsString) {
-                return Text(
-                  itemAsString,
-                  style: TextStyle(
-                      fontSize: 18.0,
-                      color: Color(0XFF7B9EB1),
-                      fontWeight: FontWeight.bold),
-                );
-              },
+              showSearchBox: true,
               dropdownSearchDecoration: InputDecoration(
                 border: new OutlineInputBorder(
                   borderSide: BorderSide(

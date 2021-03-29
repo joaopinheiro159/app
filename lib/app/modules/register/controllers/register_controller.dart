@@ -42,6 +42,9 @@ class RegisterController extends GetxController
       print(result);
 
       Get.offAllNamed(Routes.LOGIN);
+
+      message(MessageModel(
+          'Alerta', 'Usuário cadastrado com sucesso. Favor efetuar o login.'));
     } on RestClientException catch (e) {
       print(e);
       loading(false);
