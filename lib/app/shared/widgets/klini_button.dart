@@ -4,7 +4,7 @@ class KliniButton extends StatelessWidget {
   final double width;
   final double height;
   final Color buttonColor;
-  final String label;
+  final dynamic label;
   final TextStyle textStyle;
   final Color labelColor;
   final double labelSize;

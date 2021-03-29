@@ -34,6 +34,8 @@ dependencies:
   responsive_framework: ^0.0.14
   shared_preferences: ^2.0.4
   url_launcher: ^6.0.3
+  screenshot: 0.2.0
+  share: ^2.0.1
 
 dev_dependencies:
   flutter_test:
