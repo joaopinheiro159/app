@@ -157,11 +157,16 @@ class MenuView extends GetView<MenuController> {
                   ),
                 ),
                 SizedBox(height: 10),
-                MenuCard(
-                  icon: FontAwesomeIcons.dollarSign,
-                  title: 'Financeiro',
-                  description:
-                      'Consulte ser histórico de pagamento, segunda via, boleto digital, imposto de renda…',
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.FINANCIAL);
+                  },
+                  child: MenuCard(
+                    icon: FontAwesomeIcons.dollarSign,
+                    title: 'Financeiro',
+                    description:
+                        'Consulte ser histórico de pagamento, segunda via, boleto digital, imposto de renda…',
+                  ),
                 ),
                 SizedBox(height: 10),
                 GestureDetector(
