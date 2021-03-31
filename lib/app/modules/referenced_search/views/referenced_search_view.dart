@@ -131,7 +131,7 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
               maxHeight: 300,
               onFind: (String filter) => controller.getBairros(),
               onChanged: (bairro) {
-                print(bairro.codBairro);
+                controller.codBairro.value = bairro.codBairro;
               },
               selectedItem: BairroModel(nome: 'Informe o bairro'),
               dropdownBuilder:
@@ -175,7 +175,8 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
               maxHeight: 300,
               onFind: (String filter) => controller.getEspecialidade(),
               onChanged: (especialidade) {
-                print(especialidade.codEspecialidade);
+                controller.codEspecialidade.value =
+                    especialidade.codEspecialidade;
               },
               selectedItem:
                   EspecialidadeModel(descricao: 'Informe a especialidade'),
@@ -218,7 +219,11 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
             labelColor: Colors.white,
             label: 'Pesquisar',
             onPressed: () {
-              Get.toNamed(Routes.REFERENCED_SEARCH_RESULT);
+              Get.toNamed(Routes.REFERENCED_SEARCH_RESULT, parameters: {
+                'codCidade': controller.codCidade.value,
+                'codBairro': controller.codBairro.value,
+                'codEspecialidade': controller.codEspecialidade.value
+              });
             },
           ),
           Expanded(

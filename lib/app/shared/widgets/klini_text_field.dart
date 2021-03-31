@@ -7,16 +7,18 @@ class KliniTextField extends StatelessWidget {
   final bool obscureText;
   final FormFieldValidator<String> validator;
   final TextEditingController controller;
+  final int maxLength;
 
-  KliniTextField({
-    Key key,
-    this.label,
-    this.suffixIcon,
-    this.suffixIconOnPressed,
-    this.obscureText = false,
-    this.validator,
-    this.controller,
-  }) : super(key: key);
+  KliniTextField(
+      {Key key,
+      this.label,
+      this.suffixIcon,
+      this.suffixIconOnPressed,
+      this.obscureText = false,
+      this.validator,
+      this.controller,
+      this.maxLength})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

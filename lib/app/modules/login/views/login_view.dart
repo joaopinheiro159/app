@@ -42,7 +42,7 @@ class LoginView extends GetView<LoginController> {
                   controller: cpfTextEditingController,
                   label: 'CPF',
                   validator: (String value) {
-                    if (value == null || value.isBlank || !value.isCpf) {
+                    if (value == null || value.isBlank || value.length != 11) {
                       return 'CPF inválido';
                     }
                     return null;

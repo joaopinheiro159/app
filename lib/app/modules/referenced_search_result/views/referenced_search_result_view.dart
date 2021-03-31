@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/data/models/prestador_model.dart';
+import 'package:klinimed_app/app/modules/referenced_search/controllers/referenced_search_controller.dart';
 import 'package:klinimed_app/app/modules/referenced_search_result/controllers/referenced_search_result_controller.dart';
+import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/custom_appbar.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
@@ -149,154 +152,113 @@ class ReferencedSearchResultView
               ],
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
           Container(
-            width: Get.width * 0.90,
-            child: Card(
-              elevation: 1,
-              color: Color(0XFFF6F6F6),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Container(
-                padding: EdgeInsets.all(10.0),
-                height: 180,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'CEMOL',
-                      style: TextStyle(
-                          color: MainTheme.backgroundColor,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold),
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            height: 400,
+            child: FutureBuilder(
+              future: controller.obterPrestadores(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.data.length == 0) {
+                    return Center(
+                      child: Text('Nenhum prestador localizado'),
+                    );
+                  }
+                }
+
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      valueColor:
+                          new AlwaysStoppedAnimation<Color>(Colors.teal),
                     ),
-                    SizedBox(height: 15),
-                    Text(
-                      'R R LUIZ BELTRAO, 424 - VILA VALQUEIRE - 21321-230 - RIO DE JANEIRO/RJ',
-                      style: TextStyle(
-                        color: Color(0XFF7B9EB1),
-                        fontSize: 14,
-                      ),
-                    ),
-                    SizedBox(height: 15),
-                    Row(
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.businessTime,
-                          color: Color(0XFF7B9EB1),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'CONSULTÓRIO MÉDICO',
-                          style: TextStyle(
-                            color: Color(0XFF7B9EB1),
-                            fontSize: 14,
+                  );
+                }
+
+                return ListView.builder(
+                  itemCount: snapshot.data.length ?? 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    final PrestadorModel prestador = snapshot.data[index];
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return Container(
+                        padding: EdgeInsets.only(bottom: 15),
+                        width: Get.width * 0.90,
+                        child: Card(
+                          elevation: 1,
+                          color: Color(0XFFF6F6F6),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.all(10.0),
+                            height: 220,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  prestador.nome,
+                                  style: TextStyle(
+                                      color: MainTheme.backgroundColor,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: 15),
+                                Text(
+                                  prestador.endereco,
+                                  style: TextStyle(
+                                    color: Color(0XFF7B9EB1),
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                SizedBox(height: 15),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      FontAwesomeIcons.businessTime,
+                                      color: Color(0XFF7B9EB1),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      prestador.tipoPrestador,
+                                      style: TextStyle(
+                                        color: Color(0XFF7B9EB1),
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 15),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      FontAwesomeIcons.phone,
+                                      color: Color(0XFF7B9EB1),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      prestador.telefones[0].numero,
+                                      style: TextStyle(
+                                        color: Color(0XFF7B9EB1),
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 15),
-                    Row(
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.phone,
-                          color: Color(0XFF7B9EB1),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          '21 - 3952-9190',
-                          style: TextStyle(
-                            color: Color(0XFF7B9EB1),
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Container(
-            width: Get.width * 0.90,
-            child: Card(
-              elevation: 1,
-              color: Color(0XFFF6F6F6),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Container(
-                padding: EdgeInsets.all(10.0),
-                height: 180,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'CEMOL',
-                      style: TextStyle(
-                          color: MainTheme.backgroundColor,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 15),
-                    Text(
-                      'R R LUIZ BELTRAO, 424 - VILA VALQUEIRE - 21321-230 - RIO DE JANEIRO/RJ',
-                      style: TextStyle(
-                        color: Color(0XFF7B9EB1),
-                        fontSize: 14,
-                      ),
-                    ),
-                    SizedBox(height: 15),
-                    Row(
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.businessTime,
-                          color: Color(0XFF7B9EB1),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'CONSULTÓRIO MÉDICO',
-                          style: TextStyle(
-                            color: Color(0XFF7B9EB1),
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 15),
-                    Row(
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.phone,
-                          color: Color(0XFF7B9EB1),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          '21 - 3952-9190',
-                          style: TextStyle(
-                            color: Color(0XFF7B9EB1),
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
+                      );
+                    }
+
+                    return CircularProgressIndicator();
+                  },
+                );
+              },
             ),
           ),
           Expanded(
@@ -311,6 +273,11 @@ class ReferencedSearchResultView
               width: Get.width * .8,
               height: 50,
               onPressed: () {
+                final controller = Get.find<ReferencedSearchController>();
+                controller.codBairro.value = '';
+                controller.codCidade.value = '';
+                controller.codEspecialidade.value = '';
+
                 Get.back();
               },
             ),
