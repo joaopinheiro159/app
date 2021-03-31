@@ -61,11 +61,7 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
               decoration: new BoxDecoration(
                 shape: BoxShape.circle,
                 image: new DecorationImage(
-                  fit: BoxFit.fill,
-                  image: new NetworkImage(
-                    "https://reqres.in/img/faces/9-image.jpg",
-                  ),
-                ),
+                    fit: BoxFit.fill, image: AssetImage('assets/sorriso.png')),
               ),
             ),
             SizedBox(

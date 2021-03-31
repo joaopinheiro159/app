@@ -23,22 +23,21 @@ class DependentesModel {
 
   factory DependentesModel.fromMap(Map<String, dynamic> json) =>
       DependentesModel(
-        codRetorno: json["CodRetorno"],
-        msgRetorno: json["MsgRetorno"],
-        dependente: List<Dependente>.from(
-            json["Dependente"].map((x) => Dependente.fromMap(x))),
+        codRetorno: json["CodRetorno"] == null ? null : json["CodRetorno"],
+        msgRetorno: json["MsgRetorno"] == null ? null : json["MsgRetorno"],
+        dependente: json["Dependente"] == null
+            ? null
+            : List<Dependente>.from(
+                json["Dependente"].map((x) => Dependente.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "CodRetorno": codRetorno,
-        "MsgRetorno": msgRetorno,
-        "Dependente": List<dynamic>.from(dependente.map((x) => x.toMap())),
+        "CodRetorno": codRetorno == null ? null : codRetorno,
+        "MsgRetorno": msgRetorno == null ? null : msgRetorno,
+        "Dependente": dependente == null
+            ? null
+            : List<dynamic>.from(dependente.map((x) => x.toMap())),
       };
-
-  String toJson() => json.encode(toMap());
-
-  factory DependentesModel.fromJson(String source) =>
-      DependentesModel.fromMap(json.decode(source));
 }
 
 class Dependente {
@@ -51,12 +50,14 @@ class Dependente {
   final String nomeAssociado;
 
   factory Dependente.fromMap(Map<String, dynamic> json) => Dependente(
-        codigoAssociado: json["CodigoAssociado"],
-        nomeAssociado: json["NomeAssociado"],
+        codigoAssociado:
+            json["CodigoAssociado"] == null ? null : json["CodigoAssociado"],
+        nomeAssociado:
+            json["NomeAssociado"] == null ? null : json["NomeAssociado"],
       );
 
   Map<String, dynamic> toMap() => {
-        "CodigoAssociado": codigoAssociado,
-        "NomeAssociado": nomeAssociado,
+        "CodigoAssociado": codigoAssociado == null ? null : codigoAssociado,
+        "NomeAssociado": nomeAssociado == null ? null : nomeAssociado,
       };
 }

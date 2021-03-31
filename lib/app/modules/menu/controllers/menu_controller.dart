@@ -69,12 +69,14 @@ class MenuController extends GetxController
 
       _beneficiarios.add(beneficiarioAtual);
 
-      for (var dep in dependentes.dependente) {
-        print(dep.codigoAssociado);
-        final informacoesBeneficiario = await _repository.obterBeneficiario(
-            dep.codigoAssociado, userLogged.token);
+      if (dependentes.dependente != null) {
+        for (var dep in dependentes.dependente) {
+          print(dep.codigoAssociado);
+          final informacoesBeneficiario = await _repository.obterBeneficiario(
+              dep.codigoAssociado, userLogged.token);
 
-        _beneficiarios.add(informacoesBeneficiario);
+          _beneficiarios.add(informacoesBeneficiario);
+        }
       }
     } on RestClientException catch (e) {
       print(e);

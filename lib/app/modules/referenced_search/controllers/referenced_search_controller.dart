@@ -8,12 +8,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ReferencedSearchController extends GetxController {
   RxString _codCidade = ''.obs;
+  RxString _nomeCidade = ''.obs;
+
   RxString _codBairro = ''.obs;
+  RxString _nomeBairro = ''.obs;
+
   RxString _codEspecialidade = ''.obs;
+  RxString _nomeEspecialidade = ''.obs;
 
   RxString get codCidade => _codCidade;
+  RxString get nomeCidade => _nomeCidade;
+
   RxString get codBairro => _codBairro;
+  RxString get nomeBairro => _nomeBairro;
+
   RxString get codEspecialidade => _codEspecialidade;
+  RxString get nomeEspecialidade => _nomeEspecialidade;
 
   @override
   void onInit() {

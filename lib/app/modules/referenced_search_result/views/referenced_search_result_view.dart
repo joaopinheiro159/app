@@ -86,7 +86,9 @@ class ReferencedSearchResultView
                   child: Container(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      'RIO DE JANEIRO',
+                      controller.nomeCidade == ""
+                          ? 'Busca por todos'
+                          : controller.nomeCidade,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -103,7 +105,7 @@ class ReferencedSearchResultView
                   child: Container(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      'SÃO JOÃO DE MERITI',
+                      controller.nomeBairro,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -120,24 +122,7 @@ class ReferencedSearchResultView
                   child: Container(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      'CARDIOLOGISTA',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    decoration: BoxDecoration(
-                      color: MainTheme.backgroundColor,
-                      borderRadius: new BorderRadius.circular(10.0),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'DOUTOR JOÃO DA SAÚDE',
+                      controller.nomeEspecialidade,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -275,8 +260,11 @@ class ReferencedSearchResultView
               onPressed: () {
                 final controller = Get.find<ReferencedSearchController>();
                 controller.codBairro.value = '';
+                controller.nomeBairro.value = '';
                 controller.codCidade.value = '';
+                controller.nomeCidade.value = '';
                 controller.codEspecialidade.value = '';
+                controller.nomeEspecialidade.value = '';
 
                 Get.back();
               },

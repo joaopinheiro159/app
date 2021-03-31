@@ -87,7 +87,9 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
               maxHeight: 300,
               onFind: (String filter) => controller.getCidades(),
               onChanged: (cidade) {
+                print(cidade.codCidade);
                 controller.codCidade.value = cidade.codCidade;
+                controller.nomeCidade.value = cidade.nome;
               },
               selectedItem: CidadeModel(nome: 'Informe a cidade'),
               dropdownBuilder:
@@ -132,6 +134,7 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
               onFind: (String filter) => controller.getBairros(),
               onChanged: (bairro) {
                 controller.codBairro.value = bairro.codBairro;
+                controller.nomeBairro.value = bairro.nome;
               },
               selectedItem: BairroModel(nome: 'Informe o bairro'),
               dropdownBuilder:
@@ -177,6 +180,8 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
               onChanged: (especialidade) {
                 controller.codEspecialidade.value =
                     especialidade.codEspecialidade;
+
+                controller.nomeEspecialidade.value = especialidade.descricao;
               },
               selectedItem:
                   EspecialidadeModel(descricao: 'Informe a especialidade'),
@@ -221,8 +226,11 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
             onPressed: () {
               Get.toNamed(Routes.REFERENCED_SEARCH_RESULT, parameters: {
                 'codCidade': controller.codCidade.value,
+                'nomeCidade': controller.nomeCidade.value,
                 'codBairro': controller.codBairro.value,
-                'codEspecialidade': controller.codEspecialidade.value
+                'nomeBairro': controller.nomeBairro.value,
+                'codEspecialidade': controller.codEspecialidade.value,
+                'nomeEspecialidade': controller.nomeEspecialidade.value,
               });
             },
           ),

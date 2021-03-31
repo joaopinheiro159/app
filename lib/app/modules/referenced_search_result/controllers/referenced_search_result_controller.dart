@@ -17,6 +17,10 @@ class ReferencedSearchResultController extends GetxController
   final message = Rx<MessageModel>();
   List<PrestadorModel> _prestadores = [];
 
+  final String nomeCidade = Get.parameters['nomeCidade'];
+  final String nomeBairro = Get.parameters['nomeBairro'];
+  final String nomeEspecialidade = Get.parameters['nomeEspecialidade'];
+
   List<PrestadorModel> get prestadores => _prestadores;
 
   ReferencedSearchResultController(this._repository);
@@ -53,7 +57,7 @@ class ReferencedSearchResultController extends GetxController
     };
 
     var response = await Dio().get(
-        "https://vipriosaude-api-mob-beneficiario.topsaude.com.br/Api/v1/Beneficiario/redecredenciada/prestadores?CodTs=${userLogged.planos[0].codBeneficiario}&IndTipo=M&Especialidades=${Get.parameters['codEspecialidade']}&CodBairro=${Get.parameters['codBairro']}&Pagina=1&QtdRegistrosPagina=1000",
+        "https://vipriosaude-api-mob-beneficiario.topsaude.com.br/Api/v1/Beneficiario/redecredenciada/prestadores?CodTs=${userLogged.planos[0].codBeneficiario}&IndTipo=M&Especialidades=${Get.parameters['codEspecialidade']}&CodBairro=${Get.parameters['codBairro']}&CodMunicipio=${Get.parameters['codCidade']}&Pagina=1&QtdRegistrosPagina=1000",
         options: Options(headers: headers));
 
     if (response.data['CodRetorno'] == 3) {
