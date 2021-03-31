@@ -42,7 +42,6 @@ class MenuController extends GetxController
     print(Get.parameters['codbeneficiario']);
 
     loadUserDetails();
-    //obterDependentes();
   }
 
   @override

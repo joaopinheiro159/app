@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/data/models/especialidade_prestador_model.dart';
 import 'package:klinimed_app/app/data/models/prestador_model.dart';
 import 'package:klinimed_app/app/modules/referenced_search/controllers/referenced_search_controller.dart';
 import 'package:klinimed_app/app/modules/referenced_search_result/controllers/referenced_search_result_controller.dart';
@@ -205,12 +206,33 @@ class ReferencedSearchResultView
                                     SizedBox(
                                       width: 20,
                                     ),
-                                    Text(
-                                      prestador.tipoPrestador,
-                                      style: TextStyle(
-                                        color: Color(0XFF7B9EB1),
-                                        fontSize: 14,
-                                      ),
+                                    FutureBuilder(
+                                      future: controller
+                                          .obterEspecialidadesPrestador(
+                                              prestador.codPrestador),
+                                      builder: (BuildContext context,
+                                          AsyncSnapshot snapshot) {
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  new AlwaysStoppedAnimation<
+                                                      Color>(Colors.teal),
+                                            ),
+                                          );
+                                        }
+                                        final EspecialidadePrestadorModel
+                                            especialidade = snapshot.data[0];
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.done) {
+                                          return Text(especialidade.descricao,
+                                              style: TextStyle(
+                                                color: Color(0XFF7B9EB1),
+                                                fontSize: 14,
+                                              ));
+                                        }
+                                        return Text('');
+                                      },
                                     ),
                                   ],
                                 ),
@@ -266,7 +288,7 @@ class ReferencedSearchResultView
                 controller.codEspecialidade.value = '';
                 controller.nomeEspecialidade.value = '';
 
-                Get.back();
+                Get.toNamed(Routes.REFERENCED_SEARCH);
               },
             ),
           )

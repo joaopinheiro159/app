@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/data/models/especialidade_prestador_model.dart';
 import 'package:klinimed_app/app/data/models/prestador_model.dart';
 import 'package:klinimed_app/app/data/models/user_model.dart';
 import 'package:klinimed_app/app/data/providers/rest_client.dart';
@@ -73,19 +74,31 @@ class ReferencedSearchResultController extends GetxController
     }).toList();
 
     return prestadores;
-
-    // PrestadorModel models = PrestadorModel.fromMap(response.data);
-    // models.prestadores.map((e) => )
   }
 
-  // Future<void> loadPrestadores() async {
-  //   change([], status: RxStatus.loading());
+  Future<List<EspecialidadePrestadorModel>> obterEspecialidadesPrestador(
+      String codPrestdor) async {
+    final headers = {
+      'contentType': 'application/json',
+    };
 
-  //   try {
-  //     change(_prestadores = await obterPrestadores(),
-  //         status: RxStatus.success());
-  //   } catch (e) {
-  //     change([], status: RxStatus.error('Erro ao obter prestadores'));
-  //   }
-  // }
+    var response = await Dio().get(
+        "https://vipriosaude-api-mob-beneficiario.topsaude.com.br/Api/v1/Beneficiario/redecredenciada/prestador/$codPrestdor/especialidades?indTipo=M",
+        options: Options(headers: headers));
+
+    if (response.data['CodRetorno'] == 3) {
+      Get.back();
+
+      message(MessageModel('Aviso', 'Nenhuma informação encontrada'));
+
+      return null;
+    }
+
+    var especialidades =
+        (response.data['ListaEspecialidadePrestador'] as List).map((item) {
+      return EspecialidadePrestadorModel.fromJson(item);
+    }).toList();
+
+    return especialidades;
+  }
 }

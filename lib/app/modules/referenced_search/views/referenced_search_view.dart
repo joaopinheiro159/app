@@ -246,7 +246,7 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
               width: Get.width * .8,
               height: 50,
               onPressed: () {
-                Get.back();
+                Get.offAllNamed(Routes.MENU);
               },
             ),
           )
