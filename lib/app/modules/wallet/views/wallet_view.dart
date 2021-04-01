@@ -104,7 +104,7 @@ class WalletView extends GetView<WalletController> {
                 label: 'COMPARTILHAR',
                 buttonColor: MainTheme.backgroundColor,
                 labelColor: Colors.white,
-                width: Get.width * .50,
+                width: Get.width * .75,
                 height: 50,
                 onPressed: () {
                   _showDialog(context);

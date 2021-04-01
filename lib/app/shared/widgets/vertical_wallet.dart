@@ -35,7 +35,7 @@ class VerticalWallet extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/carteirinha_verde.jpg',
-                  height: 300,
+                  height: 335,
                 ),
                 Positioned(
                   left: 20,
