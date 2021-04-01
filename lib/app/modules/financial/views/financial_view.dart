@@ -103,11 +103,11 @@ class FinancialView extends GetView<FinancialController> {
           SizedBox(
             height: 10,
           ),
-          MenuCard(
-            icon: FontAwesomeIcons.file,
-            title: 'Imposto de Renda',
-            description: 'Informe do Imposto de Renda',
-          ),
+          // MenuCard(
+          //   icon: FontAwesomeIcons.file,
+          //   title: 'Imposto de Renda',
+          //   description: 'Informe do Imposto de Renda',
+          // ),
           Expanded(
             child: Container(),
           ),

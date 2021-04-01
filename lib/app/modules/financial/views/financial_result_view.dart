@@ -193,30 +193,30 @@ class FinancialResultView extends GetView<FinancialController> {
                   SizedBox(
                     height: 10,
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        labelText: 'E-mail',
-                        labelStyle: TextStyle(color: Colors.black)),
-                    controller: controller.emailController
-                      ..text = controller.beneficiarioEmail.value,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 30),
-                    child: KliniButton(
-                      label: 'ENVIAR BOLETO POR E-MAIL',
-                      buttonColor: MainTheme.backgroundColor,
-                      labelColor: Colors.white,
-                      width: Get.width * .8,
-                      height: 50,
-                      onPressed: () {
-                        controller.enviaBoletoEmail(
-                            boleto.codBoleto, controller.emailController.text);
-                      },
-                    ),
-                  ),
+                  // TextFormField(
+                  //   decoration: InputDecoration(
+                  //       labelText: 'E-mail',
+                  //       labelStyle: TextStyle(color: Colors.black)),
+                  //   controller: controller.emailController
+                  //     ..text = controller.beneficiarioEmail.value,
+                  // ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(bottom: 30),
+                  //   child: KliniButton(
+                  //     label: 'ENVIAR BOLETO POR E-MAIL',
+                  //     buttonColor: MainTheme.backgroundColor,
+                  //     labelColor: Colors.white,
+                  //     width: Get.width * .8,
+                  //     height: 50,
+                  //     onPressed: () {
+                  //       controller.enviaBoletoEmail(
+                  //           boleto.codBoleto, controller.emailController.text);
+                  //     },
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 20,
                   ),
