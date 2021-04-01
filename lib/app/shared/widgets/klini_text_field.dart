@@ -8,6 +8,7 @@ class KliniTextField extends StatelessWidget {
   final FormFieldValidator<String> validator;
   final TextEditingController controller;
   final int maxLength;
+  final TextInputType textInputType;
 
   KliniTextField(
       {Key key,
@@ -17,7 +18,8 @@ class KliniTextField extends StatelessWidget {
       this.obscureText = false,
       this.validator,
       this.controller,
-      this.maxLength})
+      this.maxLength,
+      this.textInputType})
       : super(key: key);
 
   @override
@@ -25,10 +27,13 @@ class KliniTextField extends StatelessWidget {
     return TextFormField(
       controller: this.controller,
       obscureText: this.obscureText,
+      keyboardType: this.textInputType ?? TextInputType.text,
+      maxLength: this.maxLength ?? 100,
       validator: this.validator,
       cursorColor: Colors.white,
       style: TextStyle(color: Colors.white, fontSize: 20),
       decoration: InputDecoration(
+        counterText: "",
         labelText: this.label,
         labelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         errorStyle: TextStyle(color: Colors.white),

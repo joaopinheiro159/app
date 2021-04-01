@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:klinimed_app/app/data/models/boleto_model.dart';
+import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/custom_appbar.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
@@ -36,7 +37,7 @@ class FinancialResultView extends GetView<FinancialController> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.back();
+                        Get.offAllNamed(Routes.PLAN_SELECTION);
                       },
                       child: Container(
                         padding: EdgeInsets.only(top: 35, left: 20),
@@ -55,12 +56,17 @@ class FinancialResultView extends GetView<FinancialController> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.only(top: 35, right: 20),
-                      child: Icon(
-                        Icons.menu,
-                        size: 40,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAllNamed(Routes.MENU);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(top: 35, right: 20),
+                        child: Icon(
+                          Icons.menu,
+                          size: 40,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],

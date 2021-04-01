@@ -111,7 +111,7 @@ class PlanSelectionView extends GetView<PlanSelectionController> {
             Padding(
               padding: const EdgeInsets.only(bottom: 30),
               child: KliniButton(
-                label: 'VOLTAR',
+                label: 'SAIR',
                 buttonColor: Color(0XFF7B9EB1),
                 labelColor: Colors.white,
                 width: Get.width * .75,

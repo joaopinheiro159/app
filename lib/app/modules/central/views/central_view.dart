@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/central_list_text.dart';
 import 'package:klinimed_app/app/shared/widgets/custom_appbar.dart';
@@ -31,7 +32,7 @@ class CentralView extends GetView<CentralController> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.back();
+                        Get.offAllNamed(Routes.PLAN_SELECTION);
                       },
                       child: Container(
                         padding: EdgeInsets.only(top: 35, left: 20),
@@ -50,12 +51,17 @@ class CentralView extends GetView<CentralController> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.only(top: 35, right: 20),
-                      child: Icon(
-                        Icons.menu,
-                        size: 40,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAllNamed(Routes.MENU);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(top: 35, right: 20),
+                        child: Icon(
+                          Icons.menu,
+                          size: 40,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],

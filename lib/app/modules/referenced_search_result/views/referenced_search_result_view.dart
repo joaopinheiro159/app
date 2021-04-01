@@ -33,7 +33,7 @@ class ReferencedSearchResultView
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.back();
+                        Get.offAllNamed(Routes.PLAN_SELECTION);
                       },
                       child: Container(
                         padding: EdgeInsets.only(top: 35, left: 20),
@@ -52,12 +52,17 @@ class ReferencedSearchResultView
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.only(top: 35, right: 20),
-                      child: Icon(
-                        Icons.menu,
-                        size: 40,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAllNamed(Routes.MENU);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(top: 35, right: 20),
+                        child: Icon(
+                          Icons.menu,
+                          size: 40,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],

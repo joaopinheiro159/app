@@ -31,7 +31,7 @@ class FinancialPayedView extends GetView<FinancialController> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.back();
+                        Get.offAllNamed(Routes.PLAN_SELECTION);
                       },
                       child: Container(
                         padding: EdgeInsets.only(top: 35, left: 20),

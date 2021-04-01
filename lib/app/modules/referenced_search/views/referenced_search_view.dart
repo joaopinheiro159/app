@@ -32,7 +32,7 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.back();
+                        Get.offAllNamed(Routes.PLAN_SELECTION);
                       },
                       child: Container(
                         padding: EdgeInsets.only(top: 35, left: 20),
@@ -51,12 +51,17 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.only(top: 35, right: 20),
-                      child: Icon(
-                        Icons.menu,
-                        size: 40,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAllNamed(Routes.MENU);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(top: 35, right: 20),
+                        child: Icon(
+                          Icons.menu,
+                          size: 40,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
@@ -88,7 +93,7 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
                 controller.codCidade.value = cidade.codCidade;
                 controller.nomeCidade.value = cidade.nome;
               },
-              selectedItem: CidadeModel(nome: 'Informe a cidade'),
+              selectedItem: CidadeModel(nome: 'Cidade'),
               dropdownBuilder:
                   (BuildContext context, item, String itemAsString) {
                 return Text(
@@ -133,7 +138,7 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
                 controller.codBairro.value = bairro.codBairro;
                 controller.nomeBairro.value = bairro.nome;
               },
-              selectedItem: BairroModel(nome: 'Informe o bairro'),
+              selectedItem: BairroModel(nome: 'Bairro'),
               dropdownBuilder:
                   (BuildContext context, item, String itemAsString) {
                 return Text(
@@ -180,8 +185,7 @@ class ReferencedSearchView extends GetView<ReferencedSearchController> {
 
                 controller.nomeEspecialidade.value = especialidade.descricao;
               },
-              selectedItem:
-                  EspecialidadeModel(descricao: 'Informe a especialidade'),
+              selectedItem: EspecialidadeModel(descricao: 'Especialidade'),
               dropdownBuilder:
                   (BuildContext context, item, String itemAsString) {
                 return Text(

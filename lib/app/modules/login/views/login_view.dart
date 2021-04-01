@@ -41,8 +41,10 @@ class LoginView extends GetView<LoginController> {
                 child: KliniTextField(
                   controller: cpfTextEditingController,
                   label: 'CPF',
+                  textInputType: TextInputType.number,
+                  maxLength: 11,
                   validator: (String value) {
-                    if (value == null || value.isBlank || value.length != 11) {
+                    if (value == null || value.isBlank || !value.isCpf) {
                       return 'CPF inválido';
                     }
                     return null;

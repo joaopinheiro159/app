@@ -52,7 +52,7 @@ class MenuView extends GetView<MenuController> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.back();
+                      Get.offAllNamed(Routes.PLAN_SELECTION);
                     },
                     child: Container(
                       padding: EdgeInsets.only(top: 35, left: 20),
@@ -186,12 +186,12 @@ class MenuView extends GetView<MenuController> {
                 Container(
                   width: Get.width * 0.80,
                   child: KliniButton(
-                    label: 'SAIR',
-                    buttonColor: Color(0XFFF27E77),
+                    label: 'VOLTAR',
+                    buttonColor: Color(0XFF7B9EB1),
                     height: 60,
                     labelColor: Colors.white,
                     onPressed: () {
-                      Get.offNamed(Routes.LOGIN);
+                      Get.offNamed(Routes.PLAN_SELECTION);
                     },
                   ),
                 ),
