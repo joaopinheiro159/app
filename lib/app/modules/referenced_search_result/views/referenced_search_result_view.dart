@@ -246,13 +246,14 @@ class ReferencedSearchResultView
                                     SizedBox(
                                       width: 20,
                                     ),
-                                    Text(
-                                      prestador.telefones[0].numero,
-                                      style: TextStyle(
-                                        color: Color(0XFF7B9EB1),
-                                        fontSize: 14,
+                                    for (var telefone in prestador.telefones)
+                                      Text(
+                                        telefone.numero,
+                                        style: TextStyle(
+                                          color: Color(0XFF7B9EB1),
+                                          fontSize: 14,
+                                        ),
                                       ),
-                                    ),
                                   ],
                                 ),
                               ],
