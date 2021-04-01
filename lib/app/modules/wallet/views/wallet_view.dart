@@ -16,119 +16,122 @@ class WalletView extends GetView<WalletController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: ConstrainedBox(
-          constraints:
-              BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-          child: Column(
+      body: Column(
+        children: [
+          Stack(
             children: [
-              Stack(
-                children: [
-                  ClipPath(
-                    clipBehavior: Clip.antiAlias,
-                    clipper: CustomAppbar(),
-                    child: Container(
-                      height: 130,
-                      color: MainTheme.backgroundColor,
-                    ),
-                  ),
-                  Container(
-                    height: 100,
-                    child: Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.offAllNamed(Routes.PLAN_SELECTION);
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(top: 35, left: 20),
-                            child: Image.asset(
-                              'assets/sorriso.png',
-                              height: 40,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsets.only(top: 40),
-                            child: Image.asset(
-                              'assets/klini_area_cliente.png',
-                              height: 40,
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.offAllNamed(Routes.MENU);
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(top: 35, right: 20),
-                            child: Icon(
-                              Icons.menu,
-                              size: 40,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Text(
-                'Carteirinha Digital',
-                style: TextStyle(
-                    color: MainTheme.backgroundColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: VerticalWallet(
-                  nomeBeneficiario: controller.beneficiario.nomeCartao,
-                  numeroCarteira: controller.beneficiario.numeroAssociado,
-                  plano: controller.beneficiario.nomePlano,
-                  segmentacao: controller.beneficiario.segmentacao,
-                  vigencia: controller.beneficiario.inicioVigencia,
+              ClipPath(
+                clipBehavior: Clip.antiAlias,
+                clipper: CustomAppbar(),
+                child: Container(
+                  height: 130,
+                  color: MainTheme.backgroundColor,
                 ),
               ),
-              Expanded(
-                child: Container(),
-              ),
-              KliniButton(
-                label: 'COMPARTILHAR',
-                buttonColor: MainTheme.backgroundColor,
-                labelColor: Colors.white,
-                width: Get.width * .75,
-                height: 50,
-                onPressed: () {
-                  _showDialog(context);
-                },
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 30),
-                child: KliniButton(
-                  label: 'VOLTAR',
-                  buttonColor: Color(0XFF7B9EB1),
-                  labelColor: Colors.white,
-                  width: Get.width * .75,
-                  height: 50,
-                  onPressed: () {
-                    Get.back();
-                  },
+              Container(
+                height: 100,
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAllNamed(Routes.PLAN_SELECTION);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(top: 35, left: 20),
+                        child: Image.asset(
+                          'assets/sorriso.png',
+                          height: 40,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(top: 40),
+                        child: Image.asset(
+                          'assets/klini_area_cliente.png',
+                          height: 40,
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAllNamed(Routes.MENU);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(top: 35, right: 20),
+                        child: Icon(
+                          Icons.menu,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-        ),
+          Container(
+            height: Get.height - 100,
+            child: SingleChildScrollView(
+              child: Container(
+                height: 1000,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                      'Carteirinha Digital',
+                      style: TextStyle(
+                          color: MainTheme.backgroundColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Center(
+                      child: VerticalWallet(
+                        nomeBeneficiario: controller.beneficiario.nomeCartao,
+                        numeroCarteira: controller.beneficiario.numeroAssociado,
+                        plano: controller.beneficiario.nomePlano,
+                        segmentacao: controller.beneficiario.segmentacao,
+                        vigencia: controller.beneficiario.inicioVigencia,
+                      ),
+                    ),
+                    KliniButton(
+                      label: 'COMPARTILHAR',
+                      buttonColor: MainTheme.backgroundColor,
+                      labelColor: Colors.white,
+                      width: Get.width * .75,
+                      height: 50,
+                      onPressed: () {
+                        _showDialog(context);
+                      },
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 30),
+                      child: KliniButton(
+                        label: 'VOLTAR',
+                        buttonColor: Color(0XFF7B9EB1),
+                        labelColor: Colors.white,
+                        width: Get.width * .75,
+                        height: 50,
+                        onPressed: () {
+                          Get.back();
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
