@@ -17,6 +17,9 @@ abstract class Routes {
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
   static const CENTRAL = _Paths.CENTRAL;
   static const FINANCIAL = _Paths.FINANCIAL;
+  static const FINANCIAL_OPEN = _Paths.FINANCIAL_OPEN;
+  static const FINANCIAL_PAYED = _Paths.FINANCIAL_PAYED;
+  static const FINANCIAL_RESULT = _Paths.FINANCIAL_RESULT;
 }
 
 abstract class _Paths {
@@ -35,4 +38,7 @@ abstract class _Paths {
   static const CHANGE_PASSWORD = '/change-password';
   static const CENTRAL = '/central';
   static const FINANCIAL = '/financial';
+  static const FINANCIAL_OPEN = '/financial-open';
+  static const FINANCIAL_PAYED = '/financial-payed';
+  static const FINANCIAL_RESULT = '/financial-result';
 }

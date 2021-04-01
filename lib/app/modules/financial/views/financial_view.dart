@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/custom_appbar.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
@@ -76,18 +77,28 @@ class FinancialView extends GetView<FinancialController> {
           SizedBox(
             height: 30,
           ),
-          MenuCard(
-            icon: FontAwesomeIcons.file,
-            title: '2ª via Boleto (abertos)',
-            description: 'Gere a segunda via do seu boleto',
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(Routes.FINANCIAL_OPEN);
+            },
+            child: MenuCard(
+              icon: FontAwesomeIcons.file,
+              title: '2ª via Boleto (abertos)',
+              description: 'Gere a segunda via do seu boleto',
+            ),
           ),
           SizedBox(
             height: 10,
           ),
-          MenuCard(
-            icon: FontAwesomeIcons.file,
-            title: 'Histórico de Boleto (pagos)',
-            description: 'Gere a segunda via do seu boleto',
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(Routes.FINANCIAL_PAYED);
+            },
+            child: MenuCard(
+              icon: FontAwesomeIcons.file,
+              title: 'Histórico de Boleto (pagos)',
+              description: 'Gere a segunda via do seu boleto',
+            ),
           ),
           SizedBox(
             height: 10,
