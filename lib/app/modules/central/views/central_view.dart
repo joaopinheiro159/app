@@ -125,7 +125,37 @@ class CentralView extends GetView<CentralController> {
                         'Acesse a conteúdos de saúde atualizados e confiáveis.',
                   ),
                   SizedBox(
-                    height: 40,
+                    height: 20,
+                  ),
+                  Text(
+                    'Telefone',
+                    style: TextStyle(
+                      color: Color(0XFF7B9EB1),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '(21) 3952-9190',
+                    style: TextStyle(
+                      color: Color(0XFF7B9EB1),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Opção 1',
+                    style: TextStyle(
+                      color: Color(0XFF7B9EB1),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   Container(
                     padding: EdgeInsets.only(left: 20, right: 20),
