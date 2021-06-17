@@ -6,6 +6,7 @@ import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_header.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_text_field.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -118,7 +119,47 @@ class LoginView extends GetView<LoginController> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(),
+                  Container(),
+                  GestureDetector(
+                    onTap: () async {
+                      final _url = 'https://www.facebook.com/klinisaude/';
+                      await canLaunch(_url)
+                          ? await launch(_url)
+                          : throw 'Could not launch $_url';
+                    },
+                    child: Image.asset('assets/facebook.png'),
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      final _url = 'https://instagram.com/klinisaude/';
+                      await canLaunch(_url)
+                          ? await launch(_url)
+                          : throw 'Could not launch $_url';
+                    },
+                    child: Image.asset('assets/instagram.png'),
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      final _url =
+                          'https://www.linkedin.com/company/klini-saude/';
+                      await canLaunch(_url)
+                          ? await launch(_url)
+                          : throw 'Could not launch $_url';
+                    },
+                    child: Image.asset('assets/linkedin.png'),
+                  ),
+                  Container(),
+                  Container(),
+                ],
+              ),
+              SizedBox(
+                height: 30,
               ),
               Container(
                 width: Get.width * 0.80,
@@ -129,7 +170,10 @@ class LoginView extends GetView<LoginController> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-              )
+              ),
+              SizedBox(
+                height: 50,
+              ),
             ],
           ),
         ),
