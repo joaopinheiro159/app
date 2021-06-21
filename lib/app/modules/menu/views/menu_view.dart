@@ -139,7 +139,14 @@ class MenuView extends GetView<MenuController> {
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 30),
-                BoletoCard(),
+                BoletoCard(
+                  anoMes: controller.ultimoBoleto.value.dataVencimento
+                      .substring(3, 10),
+                  status: controller.ultimoBoleto.value.descSituacao
+                      .replaceAll('as', 'o'),
+                  boleto: controller.ultimoBoleto.value,
+                  valor: 'R\$${controller.ultimoBoleto.value.valor}',
+                ),
                 SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {

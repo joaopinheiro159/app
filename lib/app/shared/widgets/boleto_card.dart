@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:klinimed_app/app/data/models/boleto_model.dart';
+import 'package:klinimed_app/app/routes/app_pages.dart';
 
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 
@@ -7,13 +9,10 @@ class BoletoCard extends StatelessWidget {
   final String anoMes;
   final String valor;
   final String status;
+  final BoletoModel boleto;
 
-  const BoletoCard({
-    Key key,
-    this.anoMes,
-    this.valor,
-    this.status,
-  }) : super(key: key);
+  const BoletoCard({Key key, this.anoMes, this.valor, this.status, this.boleto})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +38,17 @@ class BoletoCard extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 7.0),
-                    child: Text(
-                      'Clique para ver todos os boletos',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.FINANCIAL);
+                      },
+                      child: Text(
+                        'Clique para ver todos os boletos',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   )
@@ -97,16 +101,24 @@ class BoletoCard extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 20),
                     child: Container(
                       width: 130,
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        onPressed: () {},
-                        height: 45,
-                        color: MainTheme.backgroundColor,
-                        child: Text(
-                          '+ detalhes',
-                          style: TextStyle(color: Colors.white),
+                      child: GestureDetector(
+                        child: MaterialButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          onPressed: () {},
+                          height: 45,
+                          color: MainTheme.backgroundColor,
+                          child: InkWell(
+                            onTap: () {
+                              Get.toNamed(Routes.FINANCIAL_RESULT,
+                                  arguments: boleto);
+                            },
+                            child: Text(
+                              '+ detalhes',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
                         ),
                       ),
                     ),

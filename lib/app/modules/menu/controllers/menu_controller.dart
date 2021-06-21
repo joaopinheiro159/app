@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:klinimed_app/app/data/models/beneficiario_model.dart';
+import 'package:klinimed_app/app/data/models/boleto_model.dart';
 import 'package:klinimed_app/app/data/models/dependentes_model.dart';
 import 'package:klinimed_app/app/data/models/user_model.dart';
 import 'package:klinimed_app/app/data/providers/rest_client.dart';
@@ -32,6 +34,8 @@ class MenuController extends GetxController
   UserModel get user => _userController.user;
   BeneficiarioModel get beneficiario => _userController.beneficiario;
 
+  final ultimoBoleto = BoletoModel().obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -42,6 +46,7 @@ class MenuController extends GetxController
     print(Get.parameters['codbeneficiario']);
 
     loadUserDetails();
+    boletosPagos();
   }
 
   @override
@@ -105,5 +110,32 @@ class MenuController extends GetxController
     } catch (e) {
       change([], status: RxStatus.error());
     }
+  }
+
+  Future<List<BoletoModel>> boletosPagos() async {
+    final sp = await SharedPreferences.getInstance();
+
+    final userLogged = UserModel.fromJson(sp.getString('user'));
+
+    final headers = {
+      'contentType': 'application/json',
+      'authorization': 'Bearer ${userLogged.token}'
+    };
+
+    var response = await Dio().get(
+        "https://vipriosaude-api-mob-beneficiario.topsaude.com.br/Api/v1/Cobranca/${userLogged.planos[0].codBeneficiario}/boletos?ind_a_vencer=S&ind_vencidos=S&ind_pagos=S",
+        options: Options(headers: headers));
+
+    if (response.data['CodRetorno'] == 1) {
+      return [];
+    }
+
+    var boletos = (response.data['Pagos'] as List).map((item) {
+      return BoletoModel.fromJson(item);
+    }).toList();
+
+    ultimoBoleto(boletos[0]);
+
+    return boletos;
   }
 }
