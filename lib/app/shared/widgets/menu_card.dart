@@ -8,19 +8,22 @@ class MenuCard extends StatelessWidget {
   final String title;
   final String description;
   final Colors iconColor;
-  const MenuCard({
-    Key key,
-    this.icon,
-    this.title,
-    this.description,
-    this.iconColor,
-  }) : super(key: key);
+  final BorderSide side;
+  const MenuCard(
+      {Key key,
+      this.icon,
+      this.title,
+      this.description,
+      this.iconColor,
+      this.side})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: MainTheme.backgroundColor,
       shape: RoundedRectangleBorder(
+        side: side ?? BorderSide(color: MainTheme.backgroundColor),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Container(

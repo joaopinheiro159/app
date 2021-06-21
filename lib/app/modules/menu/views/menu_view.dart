@@ -10,6 +10,7 @@ import 'package:klinimed_app/app/shared/widgets/custom_appbar.dart';
 import 'package:klinimed_app/app/shared/widgets/horizontal_wallet.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
+import 'package:klinimed_app/app/shared/widgets/main_menu.dart';
 import 'package:klinimed_app/app/shared/widgets/menu_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -74,10 +75,21 @@ class MenuView extends GetView<MenuController> {
                   ),
                   Container(
                     padding: EdgeInsets.only(top: 35, right: 20),
-                    child: Icon(
-                      Icons.menu,
-                      size: 40,
-                      color: Colors.white,
+                    child: GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: Get.context,
+                          builder: (BuildContext bc) {
+                            return MainMenu();
+                          },
+                        );
+                      },
+                      child: Icon(
+                        Icons.menu,
+                        size: 40,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
