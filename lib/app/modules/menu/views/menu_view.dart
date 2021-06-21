@@ -161,18 +161,6 @@ class MenuView extends GetView<MenuController> {
                 ),
                 SizedBox(height: 10),
                 GestureDetector(
-                  onTap: () {
-                    Get.toNamed(Routes.REFERENCED_SEARCH);
-                  },
-                  child: MenuCard(
-                    icon: FontAwesomeIcons.mapMarkerAlt,
-                    title: 'Rede Referenciada',
-                    description:
-                        'Encontre a rede de médicos e hospitais disponíveis para o seu plano.',
-                  ),
-                ),
-                SizedBox(height: 10),
-                GestureDetector(
                   onTap: () async {
                     final _url = 'https://agendar.amplimed.com.br/klini';
                     await canLaunch(_url)
@@ -189,18 +177,6 @@ class MenuView extends GetView<MenuController> {
                 SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(Routes.FINANCIAL);
-                  },
-                  child: MenuCard(
-                    icon: FontAwesomeIcons.dollarSign,
-                    title: 'Financeiro',
-                    description:
-                        'Consulte ser histórico de pagamento, segunda via, boleto digital, imposto de renda…',
-                  ),
-                ),
-                SizedBox(height: 10),
-                GestureDetector(
-                  onTap: () {
                     Get.toNamed(Routes.CENTRAL);
                   },
                   child: MenuCard(
@@ -208,6 +184,15 @@ class MenuView extends GetView<MenuController> {
                     title: 'Central 24h',
                     description:
                         'Programas de saúde 24 horas, consultas, exames, procedimentos…',
+                  ),
+                ),
+                SizedBox(height: 10),
+                GestureDetector(
+                  onTap: () {},
+                  child: MenuCard(
+                    icon: FontAwesomeIcons.heart,
+                    title: 'Programa Viver Bem',
+                    description: 'Monitore sua saúde através do nosso app.',
                   ),
                 ),
                 SizedBox(
