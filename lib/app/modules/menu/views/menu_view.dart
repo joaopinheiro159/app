@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:klinimed_app/app/modules/menu/controllers/menu_controller.dart';
 import 'package:klinimed_app/app/routes/app_pages.dart';
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
+import 'package:klinimed_app/app/shared/widgets/boleto_card.dart';
 import 'package:klinimed_app/app/shared/widgets/custom_appbar.dart';
 import 'package:klinimed_app/app/shared/widgets/horizontal_wallet.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -130,6 +131,16 @@ class MenuView extends GetView<MenuController> {
                 SizedBox(
                   height: 30,
                 ),
+                Text(
+                  'Último Boleto',
+                  style: TextStyle(
+                      color: MainTheme.backgroundColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 30),
+                BoletoCard(),
+                SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.REFERENCED_SEARCH);
