@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:klinimed_app/app/shared/theme/main_theme.dart';
 
 class BoletoCard extends StatelessWidget {
-  const BoletoCard({Key key}) : super(key: key);
+  final String anoMes;
+  final String valor;
+  final String status;
+
+  const BoletoCard({
+    Key key,
+    this.anoMes,
+    this.valor,
+    this.status,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +68,7 @@ class BoletoCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Maio/2021',
+                        anoMes,
                         style: TextStyle(
                             fontSize: 17,
                             color: Color(0XFF7B9EB1),
@@ -68,7 +78,7 @@ class BoletoCard extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        'R\$ 263,00',
+                        valor,
                         style: TextStyle(
                             fontSize: 17,
                             color: MainTheme.backgroundColor,
@@ -77,7 +87,7 @@ class BoletoCard extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    'NÃO PAGO',
+                    status,
                     style: TextStyle(
                         color: MainTheme.backgroundColor,
                         fontSize: 20,
