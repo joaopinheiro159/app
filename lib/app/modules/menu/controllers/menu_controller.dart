@@ -23,6 +23,7 @@ class MenuController extends GetxController
 
   final loading = false.obs;
   final message = Rx<MessageModel>();
+  final msgRetornoBoleto = ''.obs;
 
   List<BeneficiarioModel> _beneficiarios = [];
   List<DependentesModel> dependentes = [];

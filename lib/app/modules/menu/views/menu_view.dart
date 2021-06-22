@@ -12,6 +12,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:klinimed_app/app/shared/widgets/klini_button.dart';
 import 'package:klinimed_app/app/shared/widgets/main_menu.dart';
 import 'package:klinimed_app/app/shared/widgets/menu_card.dart';
+import 'package:klinimed_app/app/shared/widgets/sem_boletos_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MenuView extends GetView<MenuController> {
@@ -151,14 +152,20 @@ class MenuView extends GetView<MenuController> {
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 30),
-                BoletoCard(
-                  anoMes: controller.ultimoBoleto.value.dataVencimento
-                      .substring(3, 10),
-                  status: controller.ultimoBoleto.value.descSituacao
-                      .replaceAll('as', 'o'),
-                  boleto: controller.ultimoBoleto.value,
-                  valor: 'R\$${controller.ultimoBoleto.value.valor}',
-                ),
+                if (controller.ultimoBoleto.value.dataVencimento != null)
+                  BoletoCard(
+                    anoMes: controller.ultimoBoleto.value.dataVencimento
+                            .substring(3, 10) ??
+                        'Sem dados de faturamento',
+                    status: controller.ultimoBoleto.value.descSituacao
+                            .replaceAll('as', 'o') ??
+                        'Sem dados de faturamento',
+                    boleto: controller.ultimoBoleto?.value ??
+                        'Sem dados de faturamento',
+                    valor: 'R\$${controller.ultimoBoleto.value.valor}',
+                  )
+                else
+                  SemBoletosCard(),
                 SizedBox(height: 10),
                 GestureDetector(
                   onTap: () async {

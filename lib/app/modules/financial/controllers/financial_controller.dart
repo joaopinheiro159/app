@@ -33,9 +33,9 @@ class FinancialController extends GetxController {
     final beneficiario =
         BeneficiarioModel.fromJson(sp.getString('beneficiario'));
 
-    final email = beneficiario.beneficiario.emails[0].email;
+    //final email = beneficiario.beneficiario.emails[0].email;
 
-    _beneficiarioEmail(email);
+    //_beneficiarioEmail(email);
   }
 
   Future<List<BoletoModel>> boletosEmAberto() async {
