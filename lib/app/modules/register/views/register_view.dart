@@ -28,9 +28,22 @@ class RegisterView extends GetView<RegisterController> {
               Container(
                 width: Get.width * .80,
                 child: Center(
-                  child: Text(
-                    'Informe abaixo os dados cadastrados na contratação do seu plano Klini.',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Informe abaixo os dados cadastrados na contratação do seu plano Klini.',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Sua Senha Deverá ser uma sequência de: \n\n3 letras maiúsculas \n1 caracter especial e \n4 números \n\nEx: ABC@1234',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    ],
                   ),
                 ),
               ),
