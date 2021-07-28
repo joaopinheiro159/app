@@ -9,9 +9,14 @@ import 'package:klinimed_app/app/shared/helpers/messages_mixin.dart';
 class RegisterController extends GetxController
     with LoaderMixin, MessagesMixin {
   final UserRepository _repository;
+  final _obscureText = true.obs;
   final birthDateTextEditingController = TextEditingController();
   final loading = false.obs;
   final message = Rx<MessageModel>();
+
+  get obscureText => _obscureText.value;
+
+  void showHidePassword() => _obscureText.toggle();
 
   RegisterController(this._repository);
 

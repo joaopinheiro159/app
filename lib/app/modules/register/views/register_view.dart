@@ -70,38 +70,39 @@ class RegisterView extends GetView<RegisterController> {
               ),
               Container(
                 width: Get.width * 0.80,
-                child: KliniTextField(
-                  label: 'Senha',
-                  controller: passwordTextEditingController,
-                  obscureText: true,
-                  suffixIcon: Icon(Icons.visibility),
-                  validator: (String value) {
-                    if (value == null || value.isBlank) {
-                      return 'Senha inválida';
-                    }
-                    return null;
-                  },
-                  suffixIconOnPressed: () {
-                    print('toggle');
-                  },
-                ),
+                child: Obx(() => KliniTextField(
+                      label: 'Senha',
+                      controller: passwordTextEditingController,
+                      obscureText: controller.obscureText,
+                      suffixIcon: Icon(Icons.visibility),
+                      suffixIconOnPressed: controller.showHidePassword,
+                      validator: (String value) {
+                        Pattern pattern = r'^([A-Z].{2,2})+@[1-9].{3,3}$';
+                        RegExp regex = new RegExp(pattern);
+
+                        if (value == null ||
+                            value.isBlank ||
+                            !regex.hasMatch(value)) {
+                          return 'Senha inválida';
+                        }
+                        return null;
+                      },
+                    )),
               ),
               Container(
                 width: Get.width * 0.80,
-                child: KliniTextField(
-                  label: 'Confirme a senha',
-                  obscureText: true,
-                  suffixIcon: Icon(Icons.visibility),
-                  validator: (String value) {
-                    if (value == null || value.isBlank) {
-                      return 'Senha inválida';
-                    }
-                    return null;
-                  },
-                  suffixIconOnPressed: () {
-                    print('toggle');
-                  },
-                ),
+                child: Obx(() => KliniTextField(
+                      label: 'Confirme a senha',
+                      obscureText: controller.obscureText,
+                      suffixIcon: Icon(Icons.visibility),
+                      suffixIconOnPressed: controller.showHidePassword,
+                      validator: (String value) {
+                        if (value == null || value.isBlank) {
+                          return 'Senha inválida';
+                        }
+                        return null;
+                      },
+                    )),
               ),
               SizedBox(
                 height: 40,
