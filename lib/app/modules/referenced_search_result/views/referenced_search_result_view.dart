@@ -145,7 +145,7 @@ class ReferencedSearchResultView
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            height: 400,
+            height: Get.height - 400,
             child: FutureBuilder(
               future: controller.obterPrestadores(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {

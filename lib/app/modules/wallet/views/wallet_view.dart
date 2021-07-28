@@ -71,8 +71,7 @@ class WalletView extends GetView<WalletController> {
               ),
             ],
           ),
-          Container(
-            height: Get.height - 200,
+          Expanded(
             child: SingleChildScrollView(
               child: Container(
                 height: 1000,
